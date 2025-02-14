@@ -1,4 +1,40 @@
-@extends('layouts.app')
+@extends('layouts.auth')
+
+@section('form')
+<form method="POST" action="{{ route('login') }}">
+    @csrf
+    <div class="form-group">
+        <div class="form-label-group">
+            <label class="form-label" for="default-01">Email or Username</label>
+
+        </div>
+
+        <input type="text" class="form-control form-control-lg" id="default-01" name="email">
+        @error('email')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div><!-- .foem-group -->
+    <div class="form-group">
+        <div class="form-label-group">
+            <label class="form-label" for="password">Passcode</label>
+
+        </div>
+        <div class="form-control-wrap">
+            <a tabindex="-1" href="#" class="form-icon form-icon-right passcode-switch" data-target="password">
+                <em class="passcode-icon icon-show icon ni ni-eye"></em>
+                <em class="passcode-icon icon-hide icon ni ni-eye-off"></em>
+            </a>
+            <input type="password" class="form-control form-control-lg" id="password" name="password">
+        </div>
+    </div><!-- .foem-group -->
+    <div class="form-group">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </div>
+</form><!-- form -->
+@endsection
+
 
 @section('content')
 <div class="container">
@@ -18,9 +54,9 @@
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -32,9 +68,9 @@
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
                                 @enderror
                             </div>
                         </div>
@@ -58,9 +94,9 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
                                 @endif
                             </div>
                         </div>
