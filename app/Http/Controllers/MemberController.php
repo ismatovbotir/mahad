@@ -2,26 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\MemberStoreRequest;
 use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Role;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Member;
 
-class UserController extends Controller
+class MemberController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $title="Xodim";
-        $roles=Role::whereNot('name','Admin')->where('type',1)->get();
+        $title="Kutubxona a'zosi";
+        $roles=Role::where('type',2)->get();
         //dd($roles);
-        $data=User::paginate(10);
-        return view('user.index',compact('data','title','roles'));
+        $data=Member::paginate(10);
+        return view('member.index',compact('data','title','roles'));
     }
-    
 
     /**
      * Show the form for creating a new resource.
@@ -34,23 +32,21 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(UserStoreRequest $request)
+    public function store(MemberStoreRequest $request)
     {
-        //dd($request->all());
-       $validated=$request->validated();
-       //$role=Role::where('name',$request->input("role"))->first();
-       //dd($role->id);
-        User::create(
-            [
-                "name"=>$validated["name"],
-                "email"=>$validated["email"],
-                "password"=>Hash::make($request->input('password')),
-                "role_id"=>$validated["role"]
-            ]
+        $validated=$request->validated();
+        //dd($validated);
+        $member=Member::create([
+            "name"=>$validated["name"],
+            "surename"=>$validated["surename"],
             
-        );
-        return to_route('admin.user.index');
-        
+            "email"=>$validated["email"],
+            "role_id"=>$validated["role"],
+            "phone"=>$validated["phone"]
+            
+        ]);
+        //dd($member);
+        return to_route('admin.member.index');
     }
 
     /**
@@ -58,7 +54,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        return view('user.show');
+        return view('member.show');
     }
 
     /**

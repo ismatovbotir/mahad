@@ -23,19 +23,23 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $roles=Array(
-            "Admin","Mudir","Kutubxona Mudiri","Kutubxonachi","Talaba"
+           
+            ["name"=>"Admin","type"=>1],
+            ["name"=>"Mudir","type"=>1],
+            ["name"=>"Kutubxona Mudiri","type"=>1],
+            ["name"=>"Kutubxonachi","type"=>1],
+            ["name"=>"Ustoz","type"=>2],
+            ["name"=>"Talaba","type"=>2]
         );
         foreach($roles as $role){
 
             Role::upsert(
-                [
-                    "name"=>$role        
-                ],
+                $role,
                 [
                     "name"    
                 ],
                 [
-                    "name"=>$role
+                    "name"=>$role["name"]
                 ]);
         };
 
@@ -43,18 +47,20 @@ class DatabaseSeeder extends Seeder
         
         
         $pass=Hash::make("123456789");
-        User::upsert([
-            "email"=>"book@mahad.uz",
-            "name"=>"Admin",
-            "password"=>$pass,
-            "role_id"=>1
-        ],
-        ["email"],
-        [
-            
-            "name"=>"Admin",
-            "password"=>$pass
-        ]
+        User::upsert(
+            [
+                "email"=>"book@mahad.uz",
+                "name"=>"Admin",
+                "password"=>$pass,
+                "role_id"=>1
+            ],
+            [
+                "email"
+            ],
+            [
+                "name"=>"Admin",
+                "password"=>$pass
+            ]
         );
     }
 }

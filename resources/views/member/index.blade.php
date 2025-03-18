@@ -44,14 +44,15 @@
                                                             </div>
                                                         </div>--}}
                                     <div class="nk-tb-col"><span class="sub-text">{{$title}}</span></div>
-                                    <div class="nk-tb-col tb-col-md"><span class="sub-text">Role</span></div>
-                                    <div class="nk-tb-col tb-col-sm"><span class="sub-text">Email</span></div>
-                                    {{--<div class="nk-tb-col tb-col-md"><span class="sub-text">Phone</span></div>
+
+                                    <div class="nk-tb-col tb-col-lg"><span class="sub-text">Email</span></div>
+                                    <div class="nk-tb-col tb-col-lg"><span class="sub-text">Phone</span></div>
                                     <div class="nk-tb-col tb-col-lg"><span class="sub-text">Sinf</span></div>
-                                    <div class="nk-tb-col tb-col-lg"><span class="sub-text">Kitoblar</span></div>--}}
+                                    <div class="nk-tb-col tb-col-lg"><span class="sub-text">Kitoblar</span></div>
 
                                     <div class="nk-tb-col"><span class="sub-text">Status</span></div>
-                                    {{-- <div class="nk-tb-col nk-tb-col-tools text-right">
+                                    {{--
+                                        <div class="nk-tb-col nk-tb-col-tools text-right">
                                                             <div class="dropdown">
                                                                 <a href="#" class="btn btn-xs btn-outline-light btn-icon dropdown-toggle" data-toggle="dropdown" data-offset="0,5"><em class="icon ni ni-plus"></em></a>
                                                                 <div class="dropdown-menu dropdown-menu-xs dropdown-menu-right">
@@ -83,7 +84,8 @@
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                        </div>--}}
+                                        </div>
+                                    --}}
                                     <div class="nk-tb-col"><span class="sub-text">Action</span></div>
                                 </div><!-- .nk-tb-item -->
                                 @foreach($data as $user)
@@ -100,13 +102,18 @@
                                         </div>
                                     </div>
                                     <div class="nk-tb-col tb-col-sm">
-                                        <span>{{$user->role->name}}</span>
-                                    </div>
-                                    <div class="nk-tb-col tb-col-sm">
                                         <span>{{$user->email}}</span>
                                     </div>
-                                    
-                                  
+                                    <div class="nk-tb-col tb-col-sm">
+                                        <span>{{$user->phone}}</span>
+                                    </div>
+                                    <div class="nk-tb-col tb-col-sm">
+                                        <span>{{$user->course}}</span>
+                                    </div>
+                                    <div class="nk-tb-col tb-col-sm">
+                                        <span>{{$user->books}}</span>
+                                    </div>
+
 
                                     <div class="nk-tb-col">
                                         <span class="tb-status text-success">Active</span>
@@ -117,7 +124,7 @@
                                             <a href="#" class="btn btn-sm btn-icon btn-trigger dropdown-toggle" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                             <div class="dropdown-menu dropdown-menu-right">
                                                 <ul class="link-list-opt no-bdr">
-                                                    <li><a href="{{route('admin.user.show',['user'=>$user->id])}}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                    <li><a href="{{route('admin.member.show',['member'=>$user->id])}}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                     <li><a href="#"><em class="icon ni ni-repeat"></em><span>Orders</span></a></li>
                                                     <li class="divider"></li>
                                                     <li><a href="#"><em class="icon ni ni-shield-star"></em><span>Reset Pass</span></a></li>
@@ -155,7 +162,7 @@
 @endsection
 
 @section ('modal')
-<form action="{{route('admin.user.store')}}" method="POST">
+<form action="{{route('admin.member.store')}}" method="POST">
     @csrf
     <div class="modal fade" tabindex="-1" role="dialog" id="profile-edit">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -176,10 +183,24 @@
                             <div class="row gy-4">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="full-name">Full Name</label>
-                                        <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Ism Sharif" name="name">
+                                        <label class="form-label" for="full-name">Ism</label>
+                                        <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Ism " name="name">
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="full-name">familiya</label>
+                                        <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Familiya" name="surename">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="birth-day">Tugilgan Sana</label>
+                                        <input type="text" class="form-control form-control-lg date-picker" id="birth-day" name="bday">
+                                        
+                                    </div>
+                                </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label" for="display-name">E-mail</label>
@@ -188,18 +209,25 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="phone-no">Password</label>
-                                        <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="sirli soz" name="password">
+                                        <label class="form-label" for="phone-no">Tel</label>
+                                        <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="sirli soz" name="phone">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="form-label" for="phone-no">Role</label>
-                                        
+                                        <label class="form-label" for="phone-no">Kurs</label>
+                                        <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="Bosqich" name="course">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                       
+
                                         <div class="form-control-select">
 
-                                            <select name="role" id="" class="form-select">
-
+                                        <label class="form-label" for="role">Role</label>
+                                        <select class="form-select" id="role" data-ui="lg" name="role">
+                                                <option value="0">Rol tanlang</option>
                                                 @foreach($roles as $role)
                                                 <option value="{{$role->id}}">{{$role->name}}</option>
 
@@ -209,7 +237,11 @@
 
                                         </div>
 
-                                       
+                                        
+                                        
+                                           
+
+
                                     </div>
                                 </div>
                                 {{--

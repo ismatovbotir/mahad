@@ -36,7 +36,7 @@
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
                                     <a href="html/index-invest.html" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
+                                        <span class="nk-menu-icon"><i class="icon ni ni-coins"></i></span>
                                         <span class="nk-menu-text">Invest Dashboard</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
@@ -45,8 +45,8 @@
                                 </li><!-- .nk-menu-heading -->
                                 <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
-                                        <span class="nk-menu-text">Projects</span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-list"></em></span>
+                                        <span class="nk-menu-text">Books</span>
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
@@ -57,33 +57,26 @@
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item has-sub">
-                                    <a href="#" class="nk-menu-link nk-menu-toggle">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                                        <span class="nk-menu-text">User Manage</span>
+                                <li class="nk-menu-item">
+                                    <a href="{{route('admin.member.index')}}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><i class="icon ni ni-users"></i></span>
+                                        
+                                        <span class="nk-menu-text">Talabalar</span>
                                     </a>
-                                    <ul class="nk-menu-sub">
-                                        <li class="nk-menu-item">
-                                            <a href="html/user-list-regular.html" class="nk-menu-link"><span class="nk-menu-text">User List - Regular</span></a>
-                                        </li>
-                                        <li class="nk-menu-item">
-                                            <a href="html/user-list-compact.html" class="nk-menu-link"><span class="nk-menu-text">User List - Compact</span></a>
-                                        </li>
-                                        <li class="nk-menu-item">
-                                            <a href="html/user-details-regular.html" class="nk-menu-link"><span class="nk-menu-text">User Details - Regular</span></a>
-                                        </li>
-                                        <li class="nk-menu-item">
-                                            <a href="html/user-profile-regular.html" class="nk-menu-link"><span class="nk-menu-text">User Profile - Regular</span></a>
-                                        </li>
-                                        <li class="nk-menu-item">
-                                            <a href="html/user-card.html" class="nk-menu-link"><span class="nk-menu-text">User Contact - Card</span> <span class="nk-menu-badge badge-warning">New</span></a>
-                                        </li>
-                                    </ul><!-- .nk-menu-sub -->
+                                    
                                 </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item has-sub">
+                                <li class="nk-menu-item">
+                                    <a href="{{route('admin.user.index')}}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><i class="icon ni ni-users"></i></span>
+                                        
+                                        <span class="nk-menu-text">Hodimlar</span>
+                                    </a>
+                                    
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
-                                        <span class="nk-menu-text">AML / KYCs</span>
+                                        <span class="nk-menu-text">Users</span>
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
