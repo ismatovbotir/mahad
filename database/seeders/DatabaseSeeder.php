@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Member;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -42,8 +43,12 @@ class DatabaseSeeder extends Seeder
                     "name"=>$role["name"]
                 ]);
         };
-
         
+        Member::create([
+            'name'=>'Botir',
+            'surename'=>'Ismatov'
+        ]);
+
         
         
         $pass=Hash::make("123456789");

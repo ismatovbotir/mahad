@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\ReaderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,7 @@ Route::group(['middleware'=>'auth','as'=>'admin.'],function(){
    
     Route::resource('/member',MemberController::class);
     Route::resource('/user',UserController::class);
+    //Route::resource('/reader',ReaderController::class);
 
     
 });

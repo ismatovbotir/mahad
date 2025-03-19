@@ -24,7 +24,8 @@ class MemberStoreRequest extends FormRequest
         return [
             "name"=>"required",
             "surename"=>"required",
-            "email"=>"required",
+            "passport"=>"required|unique:passport",
+            "email"=>"required|unique:email",
             "phone"=>"required",
             "role"=>"required|min:1"
             

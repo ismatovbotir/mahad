@@ -17,8 +17,8 @@ class MemberController extends Controller
         $title="Kutubxona a'zosi";
         $roles=Role::where('type',2)->get();
         //dd($roles);
-        $data=Member::paginate(10);
-        return view('member.index',compact('data','title','roles'));
+        //$data=Member::paginate(10);
+        return view('member.index',compact('title','roles'));
     }
 
     /**
@@ -26,7 +26,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        return view('member.create');
     }
 
     /**
@@ -39,7 +39,7 @@ class MemberController extends Controller
         $member=Member::create([
             "name"=>$validated["name"],
             "surename"=>$validated["surename"],
-            
+            "passport"=>$validated["passport"],
             "email"=>$validated["email"],
             "role_id"=>$validated["role"],
             "phone"=>$validated["phone"]
