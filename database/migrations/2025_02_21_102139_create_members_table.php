@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->uuid('id');
+            $table->string('card')->nullable();
             //$table->uuid('created_by');
             //$table->foreign('created_by')->references('users')->on('id');
             $table->foreignUuid('user_id')->nullable();

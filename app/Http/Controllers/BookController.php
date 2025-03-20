@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class BookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
-        //
+        $title='Kitoblar';
+        return view('book.index',compact('title'));
     }
 
     /**
@@ -19,7 +19,9 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $title="Yangi Kitob";
+        $categories=Category::all();
+        return view('book.create',compact('title','categories'));
     }
 
     /**
@@ -27,7 +29,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

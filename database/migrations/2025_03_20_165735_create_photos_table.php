@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('book_names', function (Blueprint $table) {
+        Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->foreignUuid('bookd_id');
-            $table->enum('lang',['origin','published'])->default('published');
-            $table->string('name');
+            $table->foreignUuid('book_id');
+            $table->string('img');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('book_names');
+        Schema::dropIfExists('photos');
     }
 };
