@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\MemberStoreRequest;
+use App\Http\Requests\MemberUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\Member;
+use App\Models\MembersLog;
+use Auth;
 
 class MemberController extends Controller
 {
@@ -26,7 +29,10 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('member.create');
+        $title="Kutubxona a'zosi";
+        $roles=Role::where('type',2)->get();
+
+        return view('member.create',compact('title','roles'));
     }
 
     /**
@@ -36,15 +42,25 @@ class MemberController extends Controller
     {
         $validated=$request->validated();
         //dd($validated);
+        $bday = date("Y-m-d", strtotime($validated['bday']));
         $member=Member::create([
             "name"=>$validated["name"],
             "surename"=>$validated["surename"],
             "passport"=>$validated["passport"],
             "email"=>$validated["email"],
+            'bday'=>$bday,
             "role_id"=>$validated["role"],
             "phone"=>$validated["phone"]
             
         ]);
+        MembersLog::create(
+            [
+                'member_id'=>$member->id,
+                'user_id'=>Auth::user()->id,
+                'log'=>'created'
+            ]
+        );
+
         //dd($member);
         return to_route('admin.member.index');
     }
@@ -62,15 +78,40 @@ class MemberController extends Controller
      */
     public function edit(string $id)
     {
-        //
+       $member=Member::where('id',$id)->first();
+       $roles=Role::where('type',2)->get();
+       //dd($member);
+       $title=$member->name." malumotlarini sozlash";
+       return view('member.edit',compact('member','title','roles'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(MemberUpdateRequest $request, string $id)
     {
-        //
+        $validated=$request->validated();
+        $bday = date("Y-m-d", strtotime($validated['bday']));
+        $member=Member::where('id',$id)->update([
+            "name"=>$validated["name"],
+            "surename"=>$validated["surename"],
+            "passport"=>$validated["passport"],
+            "email"=>$validated["email"],
+            'bday'=>$bday,
+            "role_id"=>$validated["role"],
+            "phone"=>$validated["phone"]
+            
+        ]);
+        //dd($member);
+        MembersLog::create(
+            [
+                'member_id'=>$id,
+                'user_id'=>Auth::user()->id,
+                'log'=>'updated'
+            ]
+        );
+        return to_route('admin.member.index');
+
     }
 
     /**
@@ -79,5 +120,11 @@ class MemberController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function block($id){
+
+        
+
     }
 }

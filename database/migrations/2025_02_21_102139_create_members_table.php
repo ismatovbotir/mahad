@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->uuid('id');
+            //$table->uuid('created_by');
+            //$table->foreign('created_by')->references('users')->on('id');
             $table->foreignUuid('user_id')->nullable();
             $table->string('name');
             $table->string('surename');
@@ -22,6 +24,7 @@ return new class extends Migration
             $table->foreignId('course_id')->nullable();
             $table->string('phone')->nullable();
             $table->date('bday')->nullable();
+            $table->integer('status')->default('1');
 
             $table->timestamps();
         });

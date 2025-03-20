@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Role;
 use App\Models\Member;
+use App\Models\MembersLog;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -44,15 +45,12 @@ class DatabaseSeeder extends Seeder
                 ]);
         };
         
-        Member::create([
-            'name'=>'Botir',
-            'surename'=>'Ismatov'
-        ]);
+       
 
         
         
         $pass=Hash::make("123456789");
-        User::upsert(
+        $user=User::upsert(
             [
                 "email"=>"book@mahad.uz",
                 "name"=>"Admin",
@@ -67,5 +65,19 @@ class DatabaseSeeder extends Seeder
                 "password"=>$pass
             ]
         );
+
+        $member=Member::create([
+            'name'=>'Botir',
+            'surename'=>'Ismatov',
+            'passport'=>'123456789',
+            
+        ]);
+        // MembersLog::create(
+        //     [
+        //         'member_id'=>$member->id,
+        //         'user_id'=>$user->id,
+        //         'log'=>'created'
+        //     ]
+        // );
     }
 }

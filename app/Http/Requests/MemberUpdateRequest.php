@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MemberStoreRequest extends FormRequest
+class MemberUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,11 +21,12 @@ class MemberStoreRequest extends FormRequest
      */
     public function rules(): array
     {
+        //dd($this->member);
         return [
             "name"=>"required",
             "surename"=>"required",
-            "passport"=>"required|unique:members,passport",
-            "email"=>"required|unique:members,email",
+            "passport"=>"required|unique:members,passport,".str($this->member),
+            "email"=>"required|unique:members,email,".$this->member,
             "phone"=>"required",
             "bday"=>"required",
             "role"=>'integer'

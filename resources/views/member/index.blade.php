@@ -20,11 +20,11 @@
                                     <ul class="nk-block-tools g-3">
                                         {{--<li><a href="#" class="btn btn-white btn-outline-light"><em class="icon ni ni-download-cloud"></em><span>Export</span></a></li>--}}
                                         <li class="nk-block-tools-opt">
-                                            <button href="#" class="dropdown-toggle btn btn-icon btn-primary" data-toggle="modal" data-target="#profile-edit"><em class="icon ni ni-plus"></em></button>
-
+                                            <a href="{{route('admin.member.create')}}" class="dropdown-toggle btn btn-icon btn-primary" ><em class="icon ni ni-plus"></em></a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                </li>
-                                </ul>
+
                             </div>
                         </div><!-- .toggle-wrap -->
                     </div><!-- .nk-block-head-content -->

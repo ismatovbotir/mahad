@@ -4,7 +4,7 @@
             <div class="col-8 col-sm-6 text-left">
                 <div class="">
                     <label>
-                        <input wire:model.live="search" type="search" class="form-control form-control-sm" placeholder="Qidiruv uchun matn" >
+                        <input wire:model.live="search" type="search" class="form-control form-control-sm" placeholder="Qidiruv uchun matn">
                     </label>
                 </div>
             </div>
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="datatable-wrap my-3">
-            <table class="datatable nowrap nk-tb-list nk-tb-ulist dataTable no-footer" data-auto-responsive="false"  role="grid" >
+            <table class="datatable nowrap nk-tb-list nk-tb-ulist dataTable no-footer" data-auto-responsive="false" role="grid">
                 <thead>
                     <tr class="nk-tb-item nk-tb-head" role="row">
 
@@ -21,7 +21,7 @@
                         <th class="nk-tb-col tb-col-mb " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Tel:</span></th>
                         <th class="nk-tb-col tb-col-md " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Kitoblar</span></th>
                         <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Status</span></th>
-                        <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Action</span></th>
+                        <th class="nk-tb-col" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Action</span></th>
 
 
                     </tr>
@@ -36,7 +36,7 @@
                                     <span>AB</span>
                                 </div>
                                 <div class="user-info">
-                                    <span class="tb-lead">{{$user->name}} {{$user->surename}} <span class="dot dot-success d-md-none ml-1"></span></span>
+                                    <span class="tb-lead">{{$user->name}} {{$user->surename}} <span class="dot dot-{{($user->status==1?'success':'danger')}} d-md-none ml-1"></span></span>
                                     <span>{{$user->email}}</span>
                                 </div>
                             </div>
@@ -49,34 +49,32 @@
                         </td>
 
                         <td class="nk-tb-col tb-col-md">
+                            @if($user->status==1)
                             <span class="tb-status text-success">Active</span>
+
+                            @else
+                            <span class="tb-status text-danger">Blocked</span>
+                            @endif
                         </td>
-                        <td class="nk-tb-col nk-tb-col-tools">
+                        <td class="nk-tb-col tb-col">
                             <ul class="nk-tb-actions gx-1">
-                               {{-- <li class="nk-tb-action-hidden">
-                                    <a href="#" class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top" title="" data-original-title="Wallet">
-                                        <em class="icon ni ni-wallet-fill"></em>
-                                    </a>
-                                </li>
-                                <li class="nk-tb-action-hidden">
-                                    <a href="#" class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send Email">
-                                        <em class="icon ni ni-mail-fill"></em>
-                                    </a>
-                                </li>
-                                <li class="nk-tb-action-hidden">
-                                    <a href="#" class="btn btn-trigger btn-icon" data-toggle="tooltip" data-placement="top" title="" data-original-title="Suspend">
-                                        <em class="icon ni ni-user-cross-fill"></em>
-                                    </a>
-                                </li>--}}
+
                                 <li>
                                     <div class="drodown">
                                         <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt no-bdr">
-                                                <li><a href="#"><em class="icon ni ni-focus"></em><span>Quick View</span></a></li>
+                                                <li><a href="{{route('admin.member.edit',['member'=>$user->id])}}"><em class="icon ni ni-edit"></em><span>Sozlash</span></a></li>
                                                 <li><a href="#"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                 <li><a href="#"><em class="icon ni ni-repeat"></em><span>Transaction</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-activity-round"></em><span>Activities</span></a></li>
+                                                @if($user->status==1)
+                                                <li><a href="#" wire:click.prevent="block('{{$user->id}}')"><em class="icon ni ni-block"></em><span>Block</span></a></li>
+
+
+                                                @else
+                                                <li><a href="#" wire:click.prevent="active('{{$user->id}}')"><em class="icon ni ni-block"></em><span>Active</span></a></li>
+
+                                                @endif
 
                                             </ul>
                                         </div>

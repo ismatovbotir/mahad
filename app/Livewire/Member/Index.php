@@ -7,7 +7,8 @@ use Livewire\WithPagination;
 use App\Models\Role;
 use App\Models\Member;
 use Livewire\Attributes\On;
-
+use Auth;
+use App\Models\MembersLog;
 class Index extends Component
 {
     use WithPagination;
@@ -34,5 +35,29 @@ class Index extends Component
         }
         
         return view('livewire.member.index',compact('title','roles','data'));
+    }
+    public function block($id){
+        $member=Member::find($id)->update(['status'=>0]);
+        MembersLog::create(
+            [
+                'member_id'=>$id,
+                'user_id'=>Auth::user()->id,
+                'log'=>'blocked'
+            ]
+        );
+        
+        //dd($id);
+    }
+    public function active($id){
+        $member=Member::find($id)->update(['status'=>1]);
+        MembersLog::create(
+            [
+                'member_id'=>$id,
+                'user_id'=>Auth::user()->id,
+                'log'=>'activated'
+            ]
+        );
+        
+        //dd($id);
     }
 }
