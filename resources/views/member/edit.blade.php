@@ -30,39 +30,39 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="full-name">Ism</label>
-                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Ism " name="name" value="{{$member->name}}">
+                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Ism " name="name" value="{{old('name',$member->name)}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="full-name">Familiya</label>
-                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Familiya" name="surename" value="{{$member->surename}}">
+                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Familiya" name="surename" value="{{old('surename',$member->surename)}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="birth-day">Tugilgan Sana</label>
-                                                    <input type="date" class="form-control form-control-lg" name="bday"  value="{{$member->bday}}" >
+                                                    <input type="date" class="form-control form-control-lg" name="bday"  value="{{old('bday',$member->bday)}}" >
 
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="full-name">Passport</label>
-                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="JSHSHIR(PINFL)" name="passport"  value="{{$member->passport}}">
+                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="JSHSHIR(PINFL)" name="passport"  value="{{old('passport',$member->passport)}}" >
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="display-name">E-mail</label>
-                                                    <input type="text" class="form-control form-control-lg" id="display-name" placeholder="e-mail" name="email"  value="{{$member->email}}">
+                                                    <input type="text" class="form-control form-control-lg" id="display-name" placeholder="e-mail" name="email"  value="{{old('email',$member->email)}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="phone-no">Tel</label>
-                                                    <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="telefon raqami" name="phone"  value="{{$member->phone}}">
+                                                    <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="telefon raqami" name="phone"  value="{{old('phone',$member->phone)}}" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">

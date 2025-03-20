@@ -28,7 +28,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $title="xodim";
+        $roles=Role::whereNot('name','Admin')->where('type',1)->get();
+        return view('user.create',compact('title','roles'));
     }
 
     /**
@@ -66,7 +68,11 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user=User::where('id',$id)->first();
+       
+        $title="Xodim";
+        $roles=Role::whereNot('name','Admin')->where('type',1)->get();
+        return view('user.edit',compact('user','title','roles'));
     }
 
     /**

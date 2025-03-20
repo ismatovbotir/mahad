@@ -17,12 +17,11 @@
                 <thead>
                     <tr class="nk-tb-item nk-tb-head" role="row">
 
-                        <th class="nk-tb-col " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Talaba</span></th>
-                        <th class="nk-tb-col tb-col-mb " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Tel:</span></th>
-                        <th class="nk-tb-col tb-col-md " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Kitoblar</span></th>
-                        <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Status</span></th>
-                        <th class="nk-tb-col" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Action</span></th>
-
+                        <th class="nk-tb-col " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Xodim</span></th>
+                        <th class="nk-tb-col tb-col-mb " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">email</span></th>
+                        <th class="nk-tb-col tb-col-md " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Rol</span></th>
+                        <th class="nk-tb-col tb-col-md " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Action</span></th>
+                        
 
                     </tr>
                 </thead>
@@ -37,24 +36,20 @@
                                 </div>
                                 <div class="user-info">
                                     <span class="tb-lead">{{$user->name}} {{$user->surename}} <span class="dot dot-{{($user->status==1?'success':'danger')}} d-md-none ml-1"></span></span>
-                                    <span>{{$user->email}}</span>
+                                    
                                 </div>
                             </div>
                         </td>
                         <td class="nk-tb-col tb-col-mb" data-order="35040.34">
-                            <span class="tb-amount">{{$user->phone}}</span>
+                            <span>{{$user->email}}</span>
                         </td>
-                        <td class="nk-tb-col tb-col-md">
-                            <span>2 ta</span>
-                        </td>
+                        
 
                         <td class="nk-tb-col tb-col-md">
-                            @if($user->status==1)
-                            <span class="tb-status text-success">Active</span>
-
-                            @else
-                            <span class="tb-status text-danger">Blocked</span>
+                            @if($user->role)
+                            <span >{{$user->role->name}}</span>
                             @endif
+                            
                         </td>
                         <td class="nk-tb-col tb-col">
                             <ul class="nk-tb-actions gx-1">
@@ -64,17 +59,14 @@
                                         <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt no-bdr">
-                                                <li><a href="{{route('admin.member.edit',['member'=>$user->id])}}"><em class="icon ni ni-edit"></em><span>Sozlash</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-repeat"></em><span>Transaction</span></a></li>
-                                                @if($user->status==1)
-                                                <li><a href="#" wire:click.prevent="block('{{$user->id}}')"><em class="icon ni ni-lock"></em><span>Block</span></a></li>
-
-
+                                                @if($user->role->id==1)
+                                                <li><a class="disabled" href="{{route('admin.user.edit',['user'=>$user->id])}}"><em class="icon ni ni-edit"></em><span>Sozlash</span></a></li>
                                                 @else
-                                                <li><a href="#" wire:click.prevent="active('{{$user->id}}')"><em class="icon ni ni-unlock"></em><span>Active</span></a></li>
-
+                                                <li><a href="" disabled><em class="icon ni ni-edit"></em><span>Sozlash</span></a></li>
                                                 @endif
+                                                <li><a href="#"><em class="icon ni ni-lock"></em><span>Password</span></a></li>
+                                                
+                                                
 
                                             </ul>
                                         </div>

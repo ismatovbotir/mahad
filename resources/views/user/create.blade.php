@@ -6,7 +6,7 @@
         <div class="nk-content-inner">
         <div class="nk-block">
                 <div class="card card-bordered card-stretch">
-                <form action="{{route('admin.member.store')}}" method="POST">
+                <form action="{{route('admin.user.store')}}" method="POST">
                     @csrf
                     
                             <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
@@ -29,47 +29,24 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="full-name">Ism</label>
-                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Ism " name="name" value="{{@old('name')}}">
+                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Ism " name="name" value="{{old('name')}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="form-label" for="full-name">familiya</label>
-                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Familiya" name="surename" value="{{@old('surename')}}">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="form-label" for="birth-day">Tugilgan Sana</label>
-                                                    <input type="date" class="form-control form-control-lg " name="bday" value="{{@old('bday')}}">
-
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="form-label" for="full-name">Passport</label>
-                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="JSHSHIR(PINFL)" name="passport" value="{{@old('passport')}}">
-                                                </div>
-                                            </div>
+                                            
 
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="form-label" for="display-name">E-mail</label>
-                                                    <input type="text" class="form-control form-control-lg" id="display-name" placeholder="e-mail" name="email" value="{{@old('email')}}">
+                                                    <input type="email" class="form-control form-control-lg" id="display-name" placeholder="e-mail" name="email" value="{{old('email')}}">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="phone-no">Tel</label>
-                                                    <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="telefon raqami" name="phone" value="{{@old('phone')}}">
+                                                    <label class="form-label" for="phone-no">Password</label>
+                                                    <input type="text" class="form-control form-control-lg" id="password" placeholder="password" name="password" >
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="form-label" for="phone-no">Kurs</label>
-                                                    <input type="text" class="form-control form-control-lg"  placeholder="Bosqich" name="course" value="{{@old('name')}}">
-                                                </div>
-                                            </div>
+                                            
                                             <div class="col-md-6">
                                                 <div class="form-group">
 
@@ -78,7 +55,7 @@
 
                                                         <label class="form-label" for="role">Role</label>
                                                         <select class="form-select" name="role">
-                                                            <option value="0">Rol tanlang</option>
+                                                            <option value="">Rol tanlang</option>
                                                             @foreach($roles as $role)
                                                             <option value="{{$role->id}}">{{$role->name}}</option>
                                                             @endforeach
@@ -93,7 +70,7 @@
                                                         <button type="submit" class="btn btn-success">Saqlash</button>
                                                     </li>
                                                     <li>
-                                                        <a href="{{route('admin.member.index')}}"  class="link link-light">Bekor</a>
+                                                        <a href="{{route('admin.user.index')}}"  class="link link-light">Bekor</a>
                                                     </li>
                                                 </ul>
                                             </div>

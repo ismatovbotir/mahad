@@ -45,7 +45,7 @@
                                     <a href="{{route('admin.user.index')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><i class="icon ni ni-users"></i></span>
                                         
-                                        <span class="nk-menu-text">Hodimlar</span>
+                                        <span class="nk-menu-text">Xodimlar</span>
                                     </a>
                                     
                                 </li><!-- .nk-menu-item -->
