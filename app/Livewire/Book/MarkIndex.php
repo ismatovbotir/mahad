@@ -4,12 +4,14 @@ namespace App\Livewire\Book;
 
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
+use Livewire\WithPagination;
 
 use App\Models\Mark;
 use App\Models\Book;
 
 class MarkIndex extends Component
 {
+    use WithPagination;
     public $id='';
     public $qty;
     
@@ -46,6 +48,7 @@ class MarkIndex extends Component
     {
        //dd($this->id);
         $marks=Mark::where('book_id',$this->id)->paginate(10);
+        //dd($marks);
         return view('livewire.book.mark-index',compact('marks'));
     }
 }

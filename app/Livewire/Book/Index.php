@@ -26,9 +26,9 @@ class Index extends Component
                         ->orWhere('origin_name','like','%'.$this->search.'%')
                         ->orWhere('author','like','%'.$this->search.'%')
                         
-                        ->paginate(5);
+                        ->paginate(10);
         }
-       // dd($books);
+       //dd($books);
         return view('livewire.book.index',compact('books'));
     }
 }
