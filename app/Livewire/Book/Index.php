@@ -18,8 +18,17 @@ class Index extends Component
     
     public function render()
     {
-        //$categories=Category::all();
-        $books=Book::with('writers')->paginate(10);
+        if($this->search==''){
+        $books=Book::withCount('marks')->paginate(10);
+        }else{
+            $books=Book::withCount('marks')
+                        ->where('name','like','%'.$this->search.'%')
+                        ->orWhere('origin_name','like','%'.$this->search.'%')
+                        ->orWhere('author','like','%'.$this->search.'%')
+                        
+                        ->paginate(5);
+        }
+       // dd($books);
         return view('livewire.book.index',compact('books'));
     }
 }

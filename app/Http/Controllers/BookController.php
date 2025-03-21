@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BookStoreRequest;
-
+use App\Http\Requests\BookUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Book;
+use Auth;
 
 class BookController extends Controller
 {
@@ -31,8 +33,25 @@ class BookController extends Controller
      */
     public function store(BookStoreRequest $request)
     {
-        $validated=$request->validate();
-        dd($validated);
+        $validated=$request->validated();
+        //dd($request->all());
+        $book=Book::create(
+            [
+                'name'=>$request["name"],
+                'origin_name'=>$request['originname'],
+                'category_id'=>$request['category'],
+                'user_id'=>Auth::user()->id,
+                'gtin'=>$request['gtin'],
+                'author'=>$request['author'],
+                'publisher'=>$request['publisher'],
+                'published'=>$request['published'],
+                'cover'=>$request['cover'],
+                'pages'=>$request['pages']
+
+            ]
+        );
+        //dd($book);
+        return to_route('admin.book.index');
     }
 
     /**
@@ -40,7 +59,11 @@ class BookController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $book=Book::with('category')->where('id',$id)->first();
+        $title=$book->name;
+        //$categories=Category::all();
+        //dd($book);
+        return view('book.show',compact('book','title'));
     }
 
     /**
@@ -48,15 +71,47 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $book=Book::where('id',$id)->first();
+        $title=$book->name;
+        $categories=Category::all();
+        //dd($book);
+        return view('book.edit',compact('book','categories','title'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(BookUpdateRequest $request, string $id)
     {
-        //
+        $validated=$request->validated();
+        
+        $file=$request->file('photo');
+        
+       
+        //dd($path);
+        $book=Book::where('id',$id)->first();
+        $book->name=$request["name"];
+        $book->origin_name=$request['originname'];
+        $book->category_id=$request['category'];
+        $book->user_id=Auth::user()->id;
+        $book->gtin=$request['gtin'];
+        $book->author=$request['author'];
+        $book->publisher=$request['publisher'];
+        $book->published=$request['published'];
+        $book->cover=$request['cover'];
+        $book->pages=$request['pages'];
+        $book->shelf=$request['shelf'];
+        if($file!=null){
+            $ext=$file->getClientOriginalExtension();
+            $newFileName=$id.'.'.$ext;
+            $path=$file->storeAs('books',$newFileName,'public');
+            $book->img='storage/'.$path;
+
+        }
+            
+        $book->save();
+        //dd($request->all());
+        return to_route('admin.book.index');
     }
 
     /**

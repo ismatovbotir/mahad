@@ -20,7 +20,8 @@
                         <th class="nk-tb-col " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Kitoblar</span></th>
                         <th class="nk-tb-col tb-col-mb " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Muallif</span></th>
                         <th class="nk-tb-col tb-col-md " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">GTIN</span></th>
-                        <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Muqova</span></th>
+                        <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Muqova/Bet</span></th>
+                        <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Miqdor</span></th>
                         <th class="nk-tb-col" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Action</span></th>
 
 
@@ -33,31 +34,38 @@
                         <td class="nk-tb-col">
                             <div class="user-card">
                                 <div class="user-avatar bg-dim-primary d-none d-sm-flex">
-                                    <span>AB</span>
+                                    @if($book->img)
+                                    <img src="{{asset($book->img)}}" alt="">
+                                    @else
+                                    <img src=".\images\logo.jpg" alt="">
+                                    @endif
                                 </div>
                                 <div class="user-info">
-                                    @foreach($book->names as $name)
-                                        @if($name->lang=="published")
-                                        <span class="tb-lead">{{$name->name}}</span>
-                                        @else
-                                        <span>{{$name->name}}</span>
-                                        @endif
-                                    @endforeach
+                                   
+                                        <span class="tb-lead">{{$book->name}}</span>
+                                       
+                                        <span>{{$book->origin_name}}</span>
+                                      
                                 </div>
                             </div>
                         </td>
                         <td class="nk-tb-col tb-col-mb" data-order="35040.34">
-                            @foreach($book->writer as $writer)
-                            <span class="tb-amount">{{$writer->name}}</span>
-                            @endforeach
+                            
+                            <span class="tb-amount">{{$book->author}}</span>
+                            
                         </td>
                         <td class="nk-tb-col tb-col-md">
-                            <span>$book->gtin</span>
+                            <span>{{$book->gtin}}</span>
                         </td>
 
                         <td class="nk-tb-col tb-col-md">
                            
-                            <span class="tb-status text-danger">$books->cover</span>
+                            <span class="tb-status">{{$book->cover}}/{{$book->pages}}</span>
+                           
+                        </td>
+                        <td class="nk-tb-col tb-col-md">
+                           
+                            <span class="tb-status">{{$book->marks_count}}</span>
                            
                         </td>
                         <td class="nk-tb-col tb-col">
@@ -69,7 +77,7 @@
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt no-bdr">
                                                 <li><a href="{{route('admin.book.edit',['book'=>$book->id])}}"><em class="icon ni ni-edit"></em><span>Sozlash</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                <li><a href="{{route('admin.book.show',['book'=>$book->id])}}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
                                                 <li><a href="#"><em class="icon ni ni-repeat"></em><span>Transaction</span></a></li>
                                                 
 

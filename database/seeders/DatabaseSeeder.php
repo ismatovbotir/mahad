@@ -1,6 +1,9 @@
 <?php
 
 namespace Database\Seeders;
+
+use App\Models\Category;
+use App\Models\Library;
 use Illuminate\Support\Facades\Hash;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -24,6 +27,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        
         $roles=Array(
            
             ["name"=>"Admin","type"=>1],
@@ -65,6 +69,15 @@ class DatabaseSeeder extends Seeder
                 "password"=>$pass
             ]
         );
+        $library=Library::upsert(
+            [
+            'name'=>'Mahad',
+            'address'=>'Tashkent, Zarqaynar'
+            
+            ],
+            ['name'],
+            ['address'=>'Tashkent, Zarqaynar']
+        );
 
         $member=Member::create([
             'name'=>'Botir',
@@ -72,6 +85,31 @@ class DatabaseSeeder extends Seeder
             'passport'=>'123456789',
             
         ]);
+
+        $categories=Array(
+           ['name'=>'Diniy'],
+           ['name'=>'Ilmiy'],
+           ['name'=>'Adabiy'],
+           ['name'=>'Tarixiy']
+            
+
+        );
+        foreach($categories as $category){
+
+            Category::upsert(
+                $category,
+                [
+                    "name"    
+                ],
+                
+                   $category
+                );
+        };
+        
+
+
+
+
         // MembersLog::create(
         //     [
         //         'member_id'=>$member->id,

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('books', function (Blueprint $table) {
-            $table->uuid();
+            $table->uuid('id');
            
             $table->string('name');
             $table->string('origin_name')->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('author')->nullable();
             $table->string('publisher')->nullable();
             $table->integer('published')->nullable();
-            $table->string('cover')->default('hard');
+            $table->string('cover')->default('Qattiq');
             $table->integer('pages')->nullable();
             $table->timestamps();
         });
