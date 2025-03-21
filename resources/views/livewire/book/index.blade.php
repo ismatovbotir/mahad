@@ -20,7 +20,7 @@
                         <th class="nk-tb-col " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Kitoblar</span></th>
                         <th class="nk-tb-col tb-col-mb " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Muallif</span></th>
                         <th class="nk-tb-col tb-col-md " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">GTIN</span></th>
-                        <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Muqova/Bet</span></th>
+                        <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Muqova/Bet/Bo'lim</span></th>
                         <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Miqdor</span></th>
                         <th class="nk-tb-col" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Action</span></th>
 
@@ -60,7 +60,7 @@
 
                         <td class="nk-tb-col tb-col-md">
                            
-                            <span class="tb-status">{{$book->cover}}/{{$book->pages}}</span>
+                            <span class="tb-status">{{$book->cover}} / {{$book->pages}} / <span class="text-success">{{$book->shelf}}</span></span>
                            
                         </td>
                         <td class="nk-tb-col tb-col-md">
@@ -77,7 +77,7 @@
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt no-bdr">
                                                 <li><a href="{{route('admin.book.edit',['book'=>$book->id])}}"><em class="icon ni ni-edit"></em><span>Sozlash</span></a></li>
-                                                <li><a href="{{route('admin.book.show',['book'=>$book->id])}}"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                <li><a href="{{route('admin.book.show',['book'=>$book->id])}}"><em class="icon ni ni-eye"></em><span>Inventar</span></a></li>
                                                 <li><a href="#"><em class="icon ni ni-repeat"></em><span>Transaction</span></a></li>
                                                 
 
