@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookStoreRequest;
+
 use Illuminate\Http\Request;
 use App\Models\Category;
 
@@ -27,9 +29,10 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BookStoreRequest $request)
     {
-        dd($request->all());
+        $validated=$request->validate();
+        dd($validated);
     }
 
     /**
