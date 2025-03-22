@@ -32,7 +32,7 @@
             </div><!-- .nk-block-head -->
             <div class="nk-block">
                 <div class="card card-bordered card-stretch">
-
+                       <!-- test-->
                     <livewire:member.index />
 
                 </div><!-- .card -->
