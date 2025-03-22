@@ -47,7 +47,7 @@ class MarkIndex extends Component
     public function render()
     {
        //dd($this->id);
-        $marks=Mark::where('book_id',$this->id)->paginate(10);
+        $marks=Mark::where('book_id',$this->id)->paginate(5);
         //dd($marks);
         return view('livewire.book.mark-index',compact('marks'));
     }

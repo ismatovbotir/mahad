@@ -109,7 +109,6 @@
                                         <div class="form-group">
 
 
-                                            <div class="form-control-select">
 
                                                 <label class="form-label" for="role">Kategoriya</label>
                                                 <select class="form-select" name="category">
@@ -118,7 +117,7 @@
                                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                                     @endforeach
                                                 </select>
-                                            </div>
+                                           
                                         </div>
                                     </div>
                                     <div class="col-md-12">

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mark;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 class MarkController extends Controller
 {
     /**
@@ -68,6 +70,6 @@ class MarkController extends Controller
 
         $selectedMark->printed=1;
         $selectedMark->save();
-        dd($selectedMark);
+        return view('mark.label',['mark'=>$selectedMark]);
     }
 }
