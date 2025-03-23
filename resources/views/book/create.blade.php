@@ -32,81 +32,81 @@
 
             <div class="nk-block">
                 <div class="card card-bordered card-stretch">
-                <div class="card-inner">
-                    <form action="{{route('admin.book.store')}}" method="POST">
-                        @csrf
+                    <div class="card-inner">
+                        <form action="{{route('admin.book.store')}}" method="POST"  enctype="multipart/form-data">
+                            @csrf
 
 
 
 
-                        <div>
-                            @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
+                            <div>
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
                             </div>
-                            @endif
-                        </div>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="personal">
-                                <div class="row gy-4">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label" for="full-name">Kitob nomi</label>
-                                            <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Kitob Nomi" name="name" value="{{@old('name')}}">
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="personal">
+                                    <div class="row gy-4">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label" for="full-name">Kitob nomi</label>
+                                                <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Kitob Nomi" name="name" value="{{@old('name')}}">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label" for="full-name">Asl nomi</label>
-                                            <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Asl(orinal) nomi" name="originname" value="{{@old('originname')}}">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label" for="full-name">Asl nomi</label>
+                                                <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Asl(orinal) nomi" name="originname" value="{{@old('originname')}}">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-label" for="birth-day">GTIN</label>
-                                            <input type="text" class="form-control form-control-lg " name="gtin" placeholder="Kitob ISBN raqami" value="{{@old('gtin')}}">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="form-label" for="birth-day">GTIN</label>
+                                                <input type="text" class="form-control form-control-lg " name="gtin" placeholder="Kitob ISBN raqami" value="{{@old('gtin')}}">
 
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-label">Nashriyot</label>
-                                            <input type="text" class="form-control form-control-lg " name="publisher" placeholder="Nashriyot nomi" value="{{@old('publisher')}}">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="form-label">Nashriyot</label>
+                                                <input type="text" class="form-control form-control-lg " name="publisher" placeholder="Nashriyot nomi" value="{{@old('publisher')}}">
 
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-label" for="birth-day">Nashr Yili</label>
-                                            <input type="number" class="form-control form-control-lg " name="published" placeholder="Nashr Yili" value="{{@old('published')}}" max="{{date('Y')}}">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="form-label" for="birth-day">Nashr Yili</label>
+                                                <input type="number" class="form-control form-control-lg " name="published" placeholder="Nashr Yili" value="{{@old('published')}}" max="{{date('Y')}}">
 
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-label" for="full-name">Muqova</label>
-                                            <select class="form-select" name="cover">
-                                                <option value="Qattiq">Qattiq</option>
-                                                <option value="Yumshoq">Yumshoq</option>
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="form-label" for="full-name">Muqova</label>
+                                                <select class="form-select" name="cover">
+                                                    <option value="Qattiq">Qattiq</option>
+                                                    <option value="Yumshoq">Yumshoq</option>
 
-                                            </select>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label class="form-label" for="display-name">Saxifalar soni</label>
-                                            <input type="number" class="form-control form-control-lg" placeholder="Saxifalar soni" name="pages" value="{{@old('pages')}}">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label class="form-label" for="display-name">Saxifalar soni</label>
+                                                <input type="number" class="form-control form-control-lg" placeholder="Saxifalar soni" name="pages" value="{{@old('pages')}}">
+                                            </div>
                                         </div>
-                                    </div>
 
 
-                                    <div class="col-md-2">
-                                        <div class="form-group">
+                                        <div class="col-md-2">
+                                            <div class="form-group">
 
 
 
@@ -117,34 +117,58 @@
                                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                                     @endforeach
                                                 </select>
-                                           
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+
+
+                                                <label class="form-label" for="customFileLabel">Rasm(Tasvir)</label>
+                                                <div class="form-control-wrap">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="customFile" name="photo">
+                                                        <label class="custom-file-label" for="customFile">Rasm faylini tanlang</label>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label" for="display-name">Muallif,Tarjimon va Muxarrir</label>
+                                                <input type="text" class="form-control form-control-lg" placeholder="Muallif" name="author" value="{{@old('author')}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="display-name">Qisqacha mazmun</label>
+                                                <textarea name="description" class="form-control form-control-lg" placeholder="Qisqacha mazmun">{{@old('description')}}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                                <li>
+                                                    <button type="submit" class="btn btn-success">Saqlash</button>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('admin.book.index')}}" class="link link-light">Bekor</a>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="form-label" for="display-name">Muallif,Tarjimon va Muxarrir</label>
-                                            <input type="text" class="form-control form-control-lg" placeholder="Muallif" name="author" value="{{@old('author')}}">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                            <li>
-                                                <button type="submit" class="btn btn-success">Saqlash</button>
-                                            </li>
-                                            <li>
-                                                <a href="{{route('admin.book.index')}}" class="link link-light">Bekor</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div><!-- .tab-pane -->
+                                </div><!-- .tab-pane -->
 
-                        </div><!-- .tab-content -->
+                            </div><!-- .tab-content -->
 
 
 
-                    </form>
-                </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 

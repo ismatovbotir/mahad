@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -72,15 +73,20 @@ class UserController extends Controller
        
         $title="Xodim";
         $roles=Role::whereNot('name','Admin')->where('type',1)->get();
+        //dd('edit');
         return view('user.edit',compact('user','title','roles'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, string $id)
     {
-        //
+        $validated=$request->validated();
+        User::where('id',$id)->update([
+            'password'=>Hash::make($request->input('password'))
+        ]);
+        return to_route('admin.user.index');
     }
 
     /**

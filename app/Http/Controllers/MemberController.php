@@ -59,9 +59,9 @@ class MemberController extends Controller
             $newFileName=$member->id.'.'.$ext;
             $path=$file->storeAs('members',$newFileName,'public');
             $member->img='storage/'.$path;
+            $member->save();
 
         }
-        $member->save();
 
 
         MembersLog::create(
@@ -113,6 +113,17 @@ class MemberController extends Controller
             "phone"=>$validated["phone"]
             
         ]);
+
+        $file=$request->file('photo');
+        if($file!=null){
+            $ext=$file->getClientOriginalExtension();
+            $newFileName=$id.'.'.$ext;
+            $path=$file->storeAs('members',$newFileName,'public');
+            $member->img='storage/'.$path;
+            $member->save();
+
+        }
+
         //dd($member);
         MembersLog::create(
             [

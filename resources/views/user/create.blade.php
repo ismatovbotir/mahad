@@ -9,8 +9,7 @@
                 <form action="{{route('admin.user.store')}}" method="POST">
                     @csrf
                     
-                            <a href="#" class="close" data-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-                            <div class="modal-body modal-body-lg">
+                            
                                 <h5 class="title">Yangi {{$title}}</h5>
                                 <div>
                                     @if ($errors->any())
@@ -51,7 +50,7 @@
                                                 <div class="form-group">
 
 
-                                                    <div class="form-control-select">
+                                                    
 
                                                         <label class="form-label" for="role">Role</label>
                                                         <select class="form-select" name="role">
@@ -60,7 +59,7 @@
                                                             <option value="{{$role->id}}">{{$role->name}}</option>
                                                             @endforeach
                                                         </select>
-                                                    </div>
+                                                   
                                                 </div>
                                             </div>
 
@@ -78,7 +77,7 @@
                                     </div><!-- .tab-pane -->
 
                                 </div><!-- .tab-content -->
-                            </div><!-- .modal-body -->
+                           
                       
 
                 </form>

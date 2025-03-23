@@ -46,10 +46,21 @@ class BookController extends Controller
                 'publisher'=>$request['publisher'],
                 'published'=>$request['published'],
                 'cover'=>$request['cover'],
-                'pages'=>$request['pages']
+                'pages'=>$request['pages'],
+                'description'=>$request['description']
 
             ]
         );
+
+        $file=$request->file('photo');
+        if($file!=null){
+            $ext=$file->getClientOriginalExtension();
+            $newFileName=$book->id.'.'.$ext;
+            $path=$file->storeAs('books',$newFileName,'public');
+            $book->img='storage/'.$path;
+            $book->save();
+
+        }
         //dd($book);
         return to_route('admin.book.index');
     }
@@ -101,6 +112,7 @@ class BookController extends Controller
         $book->cover=$request['cover'];
         $book->pages=$request['pages'];
         $book->shelf=$request['shelf'];
+        $book->description=$request['description'];
         if($file!=null){
             $ext=$file->getClientOriginalExtension();
             $newFileName=$id.'.'.$ext;

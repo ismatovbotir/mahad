@@ -26,6 +26,7 @@ return new class extends Migration
             $table->integer('published')->nullable();
             $table->string('cover')->default('Qattiq');
             $table->integer('pages')->nullable();
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

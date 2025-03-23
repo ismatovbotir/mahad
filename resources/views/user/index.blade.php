@@ -20,11 +20,11 @@
                                     <ul class="nk-block-tools g-3">
                                         {{--<li><a href="#" class="btn btn-white btn-outline-light"><em class="icon ni ni-download-cloud"></em><span>Export</span></a></li>--}}
                                         <li class="nk-block-tools-opt">
-                                            <a href="{{route('admin.user.create')}}" class="btn btn-icon btn-primary" ><em class="icon ni ni-plus"></em></a>
+                                            <a href="{{route('admin.user.create')}}" class="btn btn-icon btn-primary"><em class="icon ni ni-plus"></em></a>
 
+                                        </li>
+                                    </ul>
                                 </div>
-                                </li>
-                                </ul>
                             </div>
                         </div><!-- .toggle-wrap -->
                     </div><!-- .nk-block-head-content -->
@@ -33,8 +33,8 @@
             <div class="nk-block">
                 <div class="card card-bordered card-stretch">
                     <div class="card-inner-group">
-                              <!-- test-->
-                       <livewire:user.index />
+                        <!-- test-->
+                        <livewire:user.index />
                     </div><!-- .card-inner-group -->
                 </div><!-- .card -->
             </div><!-- .nk-block -->
@@ -47,7 +47,7 @@
 
 @section ('modal')
 <div class="modal fade" tabindex="-1" role="dialog" id="profile-edit">
-   
+
 </div><!-- .modal -->
 
 @endsection
