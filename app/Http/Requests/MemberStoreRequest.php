@@ -28,6 +28,7 @@ class MemberStoreRequest extends FormRequest
             "email"=>"required|unique:members,email",
             "phone"=>"required",
             "bday"=>"required",
+            "photo"=>'image|mimes:jpg,jpeg,png|max:1024',
             "role"=>'integer'
             
         ];

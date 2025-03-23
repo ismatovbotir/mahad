@@ -25,6 +25,7 @@ return new class extends Migration
             $table->foreignId('course_id')->nullable();
             $table->string('phone')->nullable();
             $table->date('bday')->nullable();
+            $table->string('img')->nullable();
             $table->integer('status')->default('1');
 
             $table->timestamps();

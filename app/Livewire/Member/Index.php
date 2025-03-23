@@ -24,7 +24,7 @@ class Index extends Component
     {
 
         $title="Kutubxona a'zolari";
-        $roles=Role::where('type',2)->get();
+        $roles=Role::where('type',2)->orderBy('name','desc')->get();
         //dd($roles);
         if($this->search==''){
 

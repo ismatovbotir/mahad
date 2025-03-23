@@ -30,7 +30,7 @@ class MemberController extends Controller
     public function create()
     {
         $title="Kutubxona a'zosi";
-        $roles=Role::where('type',2)->get();
+        $roles=Role::where('type',2)->orderBy('name','asc')->get();
 
         return view('member.create',compact('title','roles'));
     }
@@ -53,6 +53,17 @@ class MemberController extends Controller
             "phone"=>$validated["phone"]
             
         ]);
+        $file=$request->file('photo');
+        if($file!=null){
+            $ext=$file->getClientOriginalExtension();
+            $newFileName=$member->id.'.'.$ext;
+            $path=$file->storeAs('members',$newFileName,'public');
+            $member->img='storage/'.$path;
+
+        }
+        $member->save();
+
+
         MembersLog::create(
             [
                 'member_id'=>$member->id,

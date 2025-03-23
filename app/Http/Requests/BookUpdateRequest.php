@@ -25,7 +25,7 @@ class BookUpdateRequest extends FormRequest
             "name"=>"required",
             "published"=>"integer",
             "pages"=>"integer",
-            "photo"=>'image|mimes:jpg,jpeg,png|max:2048'
+            "photo"=>'image|mimes:jpg,jpeg,png|max:1024'
         ];
     }
 }

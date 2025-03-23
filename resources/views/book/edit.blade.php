@@ -34,14 +34,14 @@
 
             <div class="nk-block">
                 <div class="card card-bordered card-stretch">
-                <div class="card-inner">
-                    <form action="{{route('admin.book.update',['book'=>$book->id])}}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
+                    <div class="card-inner">
+                        <form action="{{route('admin.book.update',['book'=>$book->id])}}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
 
 
-                       
-                            
+
+
                             <div>
                                 @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -179,11 +179,11 @@
                                 </div><!-- .tab-pane -->
 
                             </div><!-- .tab-content -->
-                        
 
 
-                    </form>
-                </div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
 

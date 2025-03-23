@@ -32,8 +32,12 @@
 
                         <td class="nk-tb-col">
                             <div class="user-card">
-                                <div class="user-avatar bg-dim-primary d-none d-sm-flex">
-                                    <span>AB</span>
+                            <div class="user-avatar bg-dim d-none d-sm-flex">
+                                    @if($user->img)
+                                    <img src="{{asset($user->img)}}" alt="">
+                                    @else
+                                    <img src=".\images\logo.jpg" alt="">
+                                    @endif
                                 </div>
                                 <div class="user-info">
                                     <span class="tb-lead">{{$user->name}} {{$user->surename}} <span class="dot dot-{{($user->status==1?'success':'danger')}} d-md-none ml-1"></span></span>
@@ -65,7 +69,7 @@
                                         <div class="dropdown-menu dropdown-menu-right">
                                             <ul class="link-list-opt no-bdr">
                                                 <li><a href="{{route('admin.member.edit',['member'=>$user->id])}}"><em class="icon ni ni-edit"></em><span>Sozlash</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-eye"></em><span>View Details</span></a></li>
+                                                <li><a href="{{route('admin.member.show',['member'=>$user->id])}}"><em class="icon ni ni-book"></em><span>Kitoblar</span></a></li>
                                                 <li><a href="#"><em class="icon ni ni-repeat"></em><span>Transaction</span></a></li>
                                                 @if($user->status==1)
                                                 <li><a href="#" wire:click.prevent="block('{{$user->id}}')"><em class="icon ni ni-lock"></em><span>Block</span></a></li>
