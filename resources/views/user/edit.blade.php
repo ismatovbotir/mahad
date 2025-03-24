@@ -4,15 +4,45 @@
 <div class="nk-content ">
     <div class="container-fluid">
         <div class="nk-content-inner">
+            <div class="nk-block-head nk-block-head-sm">
+                <div class="nk-block-between">
+                    <div class="nk-block-head-content">
+                        <h3 class="nk-block-title page-title">{{$title}}</h3>
+                        <div class="nk-block-des text-soft">
+
+                        </div>
+                    </div><!-- .nk-block-head-content -->
+                    <div class="nk-block-head-content">
+                        <div class="toggle-wrap nk-block-tools-toggle">
+                            <a href="#" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-menu-alt-r"></em></a>
+                            <div class="toggle-expand-content" data-content="pageMenu">
+                                <ul class="nk-block-tools g-3">
+
+                                    <li class="nk-block-tools-opt">
+                                        <a href="{{route('admin.user.index')}}" class="dropdown-toggle btn btn-icon btn-danger"><em class="icon ni ni-home"></em></a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div><!-- .toggle-wrap -->
+                </div><!-- .nk-block-head-content -->
+            </div><!-- .nk-block-between -->
+
+
+
+
+
             <div class="nk-block">
                 <div class="card card-bordered card-stretch">
-                    <form action="{{route('admin.user.update',['user'=>$user->id])}}" method="POST">
-                        @csrf
-                        @method('PUT')
+                    <div class="card-inner">
+                        <form action="{{route('admin.user.update',['user'=>$user->id])}}" method="POST">
+                            @csrf
+                            @method('PUT')
 
-                        <a href="#" ><em class="icon ni ni-cross-sm"></em></a>
-                        <div class="modal-body modal-body-lg">
-                            <h5 class="title">{{$title}}</h5>
+
+
+                           
                             <div>
                                 @if ($errors->any())
                                 <div class="alert alert-danger">
@@ -52,20 +82,20 @@
                                             <div class="form-group">
 
 
-                                                <div class="form-control-select">
 
-                                                    <label class="form-label" for="role">Role</label>
-                                                    <select class="form-select" name="role">
-                                                        <option value="">Rol tanlang</option>
-                                                        @foreach($roles as $role)
-                                                            @if($role->id==$user->role->id)
-                                                            <option value="{{$role->id}}" selected>{{$role->name}}</option>
-                                                            @else
-                                                            <option value="{{$role->id}}">{{$role->name}}</option>
-                                                            @endif
-                                                        @endforeach
-                                                    </select>
-                                                </div>
+
+                                                <label class="form-label" for="role">Role</label>
+                                                <select class="form-select" name="role">
+                                                    <option value="">Rol tanlang</option>
+                                                    @foreach($roles as $role)
+                                                    @if($role->id==$user->role->id)
+                                                    <option value="{{$role->id}}" selected>{{$role->name}}</option>
+                                                    @else
+                                                    <option value="{{$role->id}}">{{$role->name}}</option>
+                                                    @endif
+                                                    @endforeach
+                                                </select>
+
                                             </div>
                                         </div>
 
@@ -84,10 +114,11 @@
 
 
                             </div><!-- .tab-content -->
-                        </div><!-- .modal-body -->
 
 
-                    </form>
+
+                        </form>
+                    </div>
                 </div>
             </div>
 

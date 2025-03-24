@@ -25,6 +25,7 @@ class BookController extends Controller
     {
         $title="Yangi Kitob";
         $categories=Category::all();
+        //dd($categories);
         return view('book.create',compact('title','categories'));
     }
 
@@ -51,6 +52,7 @@ class BookController extends Controller
 
             ]
         );
+        //dd($book->category->name);
 
         $file=$request->file('photo');
         if($file!=null){

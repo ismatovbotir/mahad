@@ -111,7 +111,8 @@
                                                 
 
                                                     <label class="form-label" for="category">Kategoriya</label>
-                                                    <input type="text" class="form-control form-control-lg" placeholder="Saxifalar soni" value="{{$book->category->name}}" disabled>
+                                                    
+                                                    <input type="text" class="form-control form-control-lg" placeholder="Saxifalar soni" value="{{($book->category_id?$book->category->name:'')}}" disabled>
 
                                                 
                                             </div>

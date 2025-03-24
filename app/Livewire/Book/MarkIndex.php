@@ -8,6 +8,7 @@ use Livewire\WithPagination;
 
 use App\Models\Mark;
 use App\Models\Book;
+use App\Models\Library;
 
 class MarkIndex extends Component
 {
@@ -21,13 +22,15 @@ class MarkIndex extends Component
         
     }
     public function createMark(){
+        $library=Library::first();
         $book=Book::where('id',$this->id)->first();
         $shelf=$book->shelf;
         for($x=1;$x<=$this->qty;$x++){
             Mark::create(
                 [
                     'book_id'=>$this->id,
-                    'shelf'=>$shelf
+                    'shelf'=>$shelf,
+                    'library_id'=>$library->id
                 ]
                 );
         }

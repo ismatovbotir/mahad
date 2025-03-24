@@ -16,7 +16,9 @@ class Index extends Component
         $this->search='';
     }
     
-
+    public function deleteUser($id){
+        User::where('id',$id)->delete();
+    }
     //#[On('member-created')]
     public function render()
     {

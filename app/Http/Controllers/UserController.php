@@ -29,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $title="xodim";
+        $title="Ynagi Xodim";
         $roles=Role::whereNot('name','Admin')->where('type',1)->get();
         return view('user.create',compact('title','roles'));
     }
@@ -71,7 +71,7 @@ class UserController extends Controller
     {
         $user=User::where('id',$id)->first();
        
-        $title="Xodim";
+        $title=$user->name." ma'lumotlarini yangilash";
         $roles=Role::whereNot('name','Admin')->where('type',1)->get();
         //dd('edit');
         return view('user.edit',compact('user','title','roles'));
@@ -94,6 +94,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
     }
 }

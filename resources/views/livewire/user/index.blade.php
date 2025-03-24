@@ -63,8 +63,8 @@
                                                 <li><a class="disabled" href=""><em class="icon ni ni-edit"></em><span>Sozlash</span></a></li>
                                                 @else
                                                 <li><a href="{{route('admin.user.edit',['user'=>$user->id])}}" disabled><em class="icon ni ni-edit"></em><span>Sozlash</span></a></li>
+                                                <li><a href="" wire:click.prevent="deleteUser('{{$user->id}}')"><em class="icon ni ni-cross"></em><span>Delete</span></a></li>
                                                 @endif
-                                                <li><a href="#"><em class="icon ni ni-lock"></em><span>Password</span></a></li>
                                                 
                                                 
 
