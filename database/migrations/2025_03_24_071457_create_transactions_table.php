@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('marks', function (Blueprint $table) {
-            $table->uuid('id');
-            $table->foreignUuid('book_id');
-            $table->foreignUuid('library_id')->nullable();
-            $table->integer('printed')->default(0);
-            $table->string('status')->default('New');
-            $table->string('shelf')->nullable();
-
+        Schema::create('transactions', function (Blueprint $table) {
+            $table->id();
+            $table->foreignUuid('user_id');
+            $table->foreignUuid('member_id')->nullable();
+            $table->foreignUuid('mark_id');
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('marks');
+        Schema::dropIfExists('transactions');
     }
 };
