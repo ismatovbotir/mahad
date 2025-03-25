@@ -68,6 +68,7 @@
     
    
 </div>
+
 <script>
     document.addEventListener('load',window.print())
 </script>

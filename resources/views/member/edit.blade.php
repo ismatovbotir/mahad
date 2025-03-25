@@ -123,17 +123,12 @@
                                                     </div>
                                                     <div class="col-md-3">
                                                         <div class="form-group">
-                                                            <label class="form-label" for="phone-no">Kurs</label>
-                                                            <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="Bosqich" name="course" value="{{$member->course}}">
+                                                            <label class="form-label" for="phone-no">A'zolik kartasi</label>
+                                                            <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="A'zolik kartasi raqami" name="card" value="{{$member->card}}">
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label class="form-label" for="phone-no">Azolik kartasi</label>
-                                                            <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="Azolik kartasi" name="card" value="{{$member->card}}">
-                                                        </div>
-                                                    </div>
+                                                   
 
                                                     <div class="col-md-3">
                                                         <div class="form-group">

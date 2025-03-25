@@ -94,12 +94,7 @@
                                                 <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="telefon raqami" name="phone" value="{{@old('phone')}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="form-label" for="phone-no">Kurs</label>
-                                                <input type="text" class="form-control form-control-lg" placeholder="Bosqich" name="course" value="{{@old('name')}}">
-                                            </div>
-                                        </div>
+                                        
 
                                         <div class="col-md-6">
                                             <div class="form-group">

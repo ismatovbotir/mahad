@@ -48,9 +48,10 @@ class MemberController extends Controller
             "surename"=>$validated["surename"],
             "passport"=>$validated["passport"],
             "email"=>$validated["email"],
-            'bday'=>$bday,
+            "bday"=>$bday,
             "role_id"=>$validated["role"],
-            "phone"=>$validated["phone"]
+            "phone"=>$validated["phone"],
+            "card"=>$request["card"]
             
         ]);
         $file=$request->file('photo');
@@ -81,7 +82,10 @@ class MemberController extends Controller
      */
     public function show(string $id)
     {
-        return view('member.show');
+        $title="Kutubxona a'zosi";
+        $member=Member::where('id',$id)->first();
+        //$roles=Role::where('type',2)->orderBy('name','asc')->get();
+        return view('member.show',compact('title','member'));
     }
 
     /**
@@ -103,16 +107,18 @@ class MemberController extends Controller
     {
         $validated=$request->validated();
         $bday = date("Y-m-d", strtotime($validated['bday']));
-        $member=Member::where('id',$id)->update([
-            "name"=>$validated["name"],
-            "surename"=>$validated["surename"],
-            "passport"=>$validated["passport"],
-            "email"=>$validated["email"],
-            'bday'=>$bday,
-            "role_id"=>$validated["role"],
-            "phone"=>$validated["phone"]
+        $member=Member::where('id',$id)->first();
+        
+        $member->name=$validated["name"];
+        $member->surename=$validated["surename"];
+        $member->passport=$validated["passport"];
+        $member->email=$validated["email"];
+        $member->bday=$bday;
+        $member->role_id=$validated["role"];
+        $member->phone=$validated["phone"];
+        $member->card=$request["card"];
             
-        ]);
+        
 
         $file=$request->file('photo');
         if($file!=null){
@@ -120,9 +126,9 @@ class MemberController extends Controller
             $newFileName=$id.'.'.$ext;
             $path=$file->storeAs('members',$newFileName,'public');
             $member->img='storage/'.$path;
-            $member->save();
-
+            
         }
+        $member->save();
 
         //dd($member);
         MembersLog::create(
