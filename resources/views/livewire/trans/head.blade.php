@@ -43,7 +43,7 @@
             @else
             <div class="form-group col-md-3 my-auto">
 
-                <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Kitob kodi" wire:model="bookMark" wire:keydown.enter="searchBook">
+                <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Kitob kodi" wire:model="bookMark" wire:keydown.enter="searchBook" autofocus>
             </div>
                 @if($msg!=null)
                 <div class="form-group col-md-3 my-auto">
