@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id');
             $table->string('name');
             $table->string('address');
-            $table->foreignUuid('user_id')->nullable();
+            $table->foreignUuid('user_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

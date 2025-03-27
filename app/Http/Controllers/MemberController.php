@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\Member;
 use App\Models\MembersLog;
-use Auth;
+
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
@@ -42,6 +43,7 @@ class MemberController extends Controller
     {
         $validated=$request->validated();
         //dd($validated);
+        
         $bday = date("Y-m-d", strtotime($validated['bday']));
         $member=Member::create([
             "name"=>$validated["name"],
@@ -84,6 +86,7 @@ class MemberController extends Controller
     {
         $title="Kutubxona a'zosi";
         $member=Member::where('id',$id)->first();
+        //dd($member);
         //$roles=Role::where('type',2)->orderBy('name','asc')->get();
         return view('member.show',compact('title','member'));
     }

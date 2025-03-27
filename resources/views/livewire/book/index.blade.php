@@ -41,32 +41,42 @@
                                     @endif
                                 </div>
                                 <div class="user-info">
-                                   
-                                        <span class="tb-lead">{{$book->name}}</span>
-                                       
-                                        <span>{{$book->origin_name}}</span>
-                                      
+
+                                    <span class="tb-lead">{{$book->name}}</span>
+
+                                    <span>{{$book->origin_name}}</span>
+
                                 </div>
                             </div>
                         </td>
                         <td class="nk-tb-col tb-col-mb" data-order="35040.34">
-                            
+
                             <span class="tb-amount">{{$book->author}}</span>
-                            
+
                         </td>
                         <td class="nk-tb-col tb-col-md">
                             <span>{{$book->gtin}}</span>
                         </td>
 
                         <td class="nk-tb-col tb-col-md">
-                           
+
                             <span class="tb-status">{{$book->cover}} / {{$book->pages}} / <span class="text-success">{{$book->shelf}}</span></span>
-                           
+
                         </td>
                         <td class="nk-tb-col tb-col-md">
-                           
-                            <span class="tb-status">{{$book->marks_count}}</span>
-                           
+
+
+                            <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="Kutubxonada: {{$book->library+$book->new}}">
+                                {{$book->all}}
+                            </button>
+
+
+
+
+
+
+
+
                         </td>
                         <td class="nk-tb-col tb-col">
                             <ul class="nk-tb-actions gx-1">
@@ -79,7 +89,7 @@
                                                 <li><a href="{{route('admin.book.edit',['book'=>$book->id])}}"><em class="icon ni ni-edit"></em><span>Sozlash</span></a></li>
                                                 <li><a href="{{route('admin.book.show',['book'=>$book->id])}}"><em class="icon ni ni-eye"></em><span>Inventar</span></a></li>
                                                 <li><a href="#"><em class="icon ni ni-repeat"></em><span>Transaction</span></a></li>
-                                                
+
 
                                             </ul>
                                         </div>

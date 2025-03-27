@@ -3,9 +3,10 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\BookController;
-
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\MarkController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,9 @@ use App\http\Controllers\MarkController;
 |
 */
 
-
-
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware'=>'auth','as'=>'admin.'],function(){
     

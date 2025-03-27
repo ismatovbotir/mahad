@@ -7,7 +7,7 @@ use Livewire\WithPagination;
 use App\Models\Role;
 use App\Models\Member;
 use Livewire\Attributes\On;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Models\MembersLog;
 class Index extends Component
 {
@@ -28,12 +28,12 @@ class Index extends Component
         //dd($roles);
         if($this->search==''){
 
-            $data=Member::paginate(10);
+            $data=Member::withCount('transaction')->paginate(10);
         }else{
             //dd($this->search);
-            $data=Member::where('name','like','%'.$this->search.'%')->orWhere('surename','like','%'.$this->search.'%')->paginate(10);
+            $data=Member::withCount('transaction')->where('name','like','%'.$this->search.'%')->orWhere('surename','like','%'.$this->search.'%')->paginate(10);
         }
-        
+        //dd($data);
         return view('livewire.member.index',compact('title','roles','data'));
     }
     public function block($id){

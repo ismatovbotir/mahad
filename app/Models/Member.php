@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Role;
+use App\Models\Transaction;
 
 class Member extends Model
 {
@@ -17,5 +18,8 @@ class Member extends Model
 
     public function role(){
         return $this->belongsTo(Role::class);
+    }
+    public function transaction(){
+        return $this->hasMany(Transaction::class)->where('status','Kitobxonda');
     }
 }

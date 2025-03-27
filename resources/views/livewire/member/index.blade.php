@@ -49,7 +49,7 @@
                             <span class="tb-amount">{{$user->phone}}</span>
                         </td>
                         <td class="nk-tb-col tb-col-md">
-                            <span>2 ta</span>
+                            <span>{{$user->transaction_count}} ta</span>
                         </td>
 
                         <td class="nk-tb-col tb-col-md">

@@ -18,10 +18,30 @@ class Index extends Component
     
     public function render()
     {
+        $agg=Book::withCount(
+            [
+                'marks as all' => function ($query) {
+                    $query->where('status','<>', 100);
+                },
+                'marks as new' => function ($query) {
+                    $query->where('status', 0);
+                },
+                'marks as library' => function ($query) {
+                    $query->where('status', 1);
+                }
+                ,
+                'marks as member' => function ($query) {
+                    $query->where('status', 2);
+                },
+                'marks as defected' => function ($query) {
+                    $query->where('status', 3);
+                }
+            ]);
         if($this->search==''){
-        $books=Book::withCount('marks')->paginate(10);
+            
+            $books=$agg->paginate(10);
         }else{
-            $books=Book::withCount('marks')
+            $books=$agg
                         ->where('name','like','%'.$this->search.'%')
                         ->orWhere('origin_name','like','%'.$this->search.'%')
                         ->orWhere('author','like','%'.$this->search.'%')

@@ -26,7 +26,17 @@
                     <td>
                         <input type="text" class="text-right mark-input" value="{{$mark->shelf}}" wire:change="updateShelf('{{$mark->id}}',$event.target.value)">
                     </td>
-                    <td class="text-{{$mark->status=='Kutubxonada'?'success':'danger'}}">{{$mark->status}}</td>
+                    @if($mark->status==0)
+                    <td class="text-warning">Yangi</td>
+                    @elseif($mark->status==1)
+                    <td class="text-success">Kutubxonada</td>
+                    @elseif($mark->status==2)
+                    <td class="text-secondary">Talabada</td>
+                    @else
+                    <td class="text-danger">Yaroqsiz</td>
+                    @endif
+
+                    
                     <td>
                         @if($mark->printed)
                             <span class="icon ni ni-done text-success"></span>

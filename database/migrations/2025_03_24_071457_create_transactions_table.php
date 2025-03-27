@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignUuid('user_id');
-            $table->foreignUuid('member_id')->nullable();
-            $table->foreignUuid('mark_id');
-            $table->string('status');
+            $table->foreignUuid('user_id')->contrained();
+            $table->foreignUuid('member_id')->nullable()->contrained();
+            $table->foreignUuid('mark_id')->contrained();
+            $table->integer('status');
+            $table->integer('state')->default(0);
             $table->timestamps();
         });
     }

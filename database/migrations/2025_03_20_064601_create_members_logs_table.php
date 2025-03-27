@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('members_logs', function (Blueprint $table) {
             $table->id();
-            $table->foreignUuid('member_id')->nullable();
-            $table->foreignUuid('user_id')->nullable();
+            $table->foreignUuid('member_id')->nullable()->constrained();
+            $table->foreignUuid('user_id')->nullable()->constrained();
             $table->string('log');
             $table->timestamps();
         });

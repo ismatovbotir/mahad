@@ -12,16 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('members', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id')->primary();
             $table->string('card')->nullable();
             //$table->uuid('created_by');
             //$table->foreign('created_by')->references('users')->on('id');
-            $table->foreignUuid('user_id')->nullable();
+            $table->foreignUuid('user_id')->nullable()->contrained();
             $table->string('name');
             $table->string('surename');
             $table->string('passport');
             $table->string('email')->nullable();
-            $table->foreignId('role_id')->default(6);
+            $table->foreignId('role_id')->default(6)->contrained();
             $table->foreignId('course_id')->nullable();
             $table->string('phone')->nullable();
             $table->date('bday')->nullable();

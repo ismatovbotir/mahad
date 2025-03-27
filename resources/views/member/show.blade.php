@@ -162,7 +162,11 @@
                 <div class="card card-bordered card-stretch">
                     <div class="card-inner">
 
-                       <livewire:transaction member="{{$member->id}}" />
+                        <div class=" dt-bootstrap4 no-footer">
+
+                            <livewire:trans.head member="{{$member->id}}" />
+                            <livewire:trans.body member="{{$member->id}}" />
+                        </div>
                     </div>
                 </div>
             </div>

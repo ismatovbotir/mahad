@@ -64,7 +64,7 @@ class BookController extends Controller
 
         }
         //dd($book);
-        return to_route('admin.book.index');
+        return to_route('admin.book.show',['book'=>$book->id]);
     }
 
     /**
