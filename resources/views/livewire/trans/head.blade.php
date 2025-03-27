@@ -7,7 +7,7 @@
 
                 <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Kitob kodi" wire:model="bookMark" wire:keydown.enter="searchBook" disabled>
             </div>
-            <div class="form-group col-md-3  my-auto" >
+            <div class="form-group col-md-5  my-auto" >
 
 
                 <div class="alert alert-primary alert-icon my-auto">
@@ -26,7 +26,7 @@
 
                 <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Kitob kodi" wire:model="bookMark" wire:keydown.enter="searchBook" disabled>
             </div>
-            <div class="form-group col-md-3 my-auto">
+            <div class="form-group col-md-5 my-auto">
 
                 <div class="alert alert-danger alert-icon my-auto">
                     <em class="icon ni ni-alert-circle"></em> <strong>{{$msg}}</strong>
@@ -46,7 +46,7 @@
                 <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Kitob kodi" wire:model="bookMark" wire:keydown.enter="searchBook" autofocus>
             </div>
                 @if($msg!=null)
-                <div class="form-group col-md-3 my-auto">
+                <div class="form-group col-md-5 my-auto">
 
 
                     <div class="alert alert-danger alert-icon">

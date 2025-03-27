@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Book;
 
+
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
@@ -9,12 +11,16 @@ use Livewire\WithPagination;
 use App\Models\Mark;
 use App\Models\Book;
 use App\Models\Library;
+use App\Models\Transaction as Trans;
+
 
 class MarkIndex extends Component
 {
     use WithPagination;
     public $id='';
     public $qty;
+    public $search=''; 
+    public $searchMark='';
     
 
     public function mount(){
@@ -43,15 +49,44 @@ class MarkIndex extends Component
         ]);
 
     }
+
+    public function restoration($id,$value){
+        Trans::create([
+
+            'user_id' => Auth::user()->id,
+            
+            'mark_id' => $id,
+            'status' => $value
+        ]);
+        
+        Mark::where('id',$id)->update([
+            'status'=>$value
+        ]);
+        //dd('done');
+    }
+
     public function justUpdate(){
+
+    }
+    public function searchMark(){
+        dd('searching');
+        $this->searchMark=$this->search;
 
     }
 
     public function render()
     {
        //dd($this->id);
-        $marks=Mark::where('book_id',$this->id)->paginate(5);
-        //dd($marks);
+       if($this->searchMark==''){ 
+            $marks=Mark::where('book_id',$this->id)->paginate(5);
+       }else{
+            $marks=Mark::where([
+                    ['book_id',$this->id],
+                    ['id',$this->searchMark]
+                
+                ])->paginate(5);
+       } //dd($marks);
+       $this->search='';
         return view('livewire.book.mark-index',compact('marks'));
     }
 }

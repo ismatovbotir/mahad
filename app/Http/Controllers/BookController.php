@@ -7,7 +7,8 @@ use App\Http\Requests\BookUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Book;
-use Auth;
+
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {

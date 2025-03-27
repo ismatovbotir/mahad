@@ -65,9 +65,9 @@
                         </td>
                         <td class="nk-tb-col tb-col-md">
 
-
-                            <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="Kutubxonada: {{$book->library+$book->new}}">
-                                {{$book->all}}
+                        {{--<span class="tb-status"><span class="text-secondary"> {{$book->all}} </span> / <span class="text-success">{{$book->library+$book->new-$book->defected}}</span></span>--}}
+                            <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="Jami: {{$book->all}} ">
+                               {{$book->library+$book->new-$book->library}}
                             </button>
 
 

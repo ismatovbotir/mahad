@@ -33,7 +33,7 @@ class Head extends Component
             //dd($mark->status);
             if ($mark->status == 3) {
                 $this->message = "Ushbu Kitobsiz yaroqsiz deb topilgan";
-                
+                $this->reset('bookMark');
             } elseif ($mark->status == 2) {
 
                 $trans = Trans::with('member')->where('mark_id', $mark->id)->where('status', '2')->latest()->first();
@@ -43,8 +43,8 @@ class Head extends Component
                     $this->bookName=$mark->book->name;
                     $this->showButton = 2;
                 } else {
-                    $this->message = "Ushbu kitob, Talaba: " . $trans->member->name . " tasarrufida";
-                   
+                    $this->message = "Ushbu kitob(". $mark->book->name."), Talaba: " . $trans->member->name . " tasarrufida";
+                    $this->reset('bookMark');
                 }
                 //dd($this->message);
             } else {
