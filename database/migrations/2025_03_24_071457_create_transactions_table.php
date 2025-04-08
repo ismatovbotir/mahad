@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignUuid('user_id')->contrained();
-            $table->foreignUuid('member_id')->nullable()->contrained();
-            $table->foreignUuid('mark_id')->contrained();
+            $table->foreignUuid('user_id')->constrained();
+            $table->foreignUuid('member_id')->nullable()->constrained();
+            $table->foreignUuid('mark_id')->constrained();
             $table->integer('status');
             $table->integer('state')->default(0);
             $table->timestamps();

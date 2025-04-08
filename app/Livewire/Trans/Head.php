@@ -30,6 +30,19 @@ class Head extends Component
             $this->message = "Bunday kitob Topilmadi";
             $this->reset('bookMark');
         } else {
+            //dd($mark->book);
+            $sameBook=Trans::with('mark.book')->where('status',2)->where('member_id',$this->member)->first();
+            //dd($sameBook);
+            if($sameBook!=null){
+                $this->message="Talaba tasarrufida ushbu kitobdan mavjud";
+                $this->showButton=0;
+                $this->reset('bookMark');
+
+            }else{
+
+            
+
+
             //dd($mark->status);
             if ($mark->status == 3) {
                 $this->message = "Ushbu Kitobsiz yaroqsiz deb topilgan";
@@ -52,6 +65,7 @@ class Head extends Component
                 $this->showButton = 1;
                 $this->message=$mark->book->name;
             }
+        }
         }
     }
 

@@ -16,10 +16,10 @@ return new class extends Migration
            
             $table->string('name');
             $table->string('origin_name')->nullable();
-            $table->foreignId('category_id')->nullable()->contrained();
+            $table->foreignId('category_id')->nullable()->constrained();
             $table->string('img')->nullable();
             $table->string('shelf')->nullable();
-            $table->foreignUuid('user_id')->contrained();
+            $table->foreignUuid('user_id')->constrained();
             $table->string('gtin')->nullable();
             $table->text('author')->nullable();
             $table->string('publisher')->nullable();

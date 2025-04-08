@@ -25,6 +25,16 @@ class Transaction extends Component
         if ($mark == null) {
             $this->message = "Bunday kitob Topilmadi";
         } else {
+            dd($mark->book);
+            $sameBook=Trans::with('mark.book')->where('status',2)->where('member',$this->member)->first();
+            dd($sameBook);
+            if($sameBook!=null){
+                $this->message="Talaba tasarrufida ushbu kitobdan mavjud";
+                $this->showButton=0;
+
+            }else{
+
+            
             //dd($mark->status);
             if ($mark->status == 3) {
                 $this->message="Ushbu Kitobsiz yaroqsiz deb topilgan";
@@ -45,7 +55,7 @@ class Transaction extends Component
                 $this->bookName = $mark->book->name;
                 $this->showButton = 1;
             }
-
+        }
             
         }
     }

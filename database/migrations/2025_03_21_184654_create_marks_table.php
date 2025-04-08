@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('marks', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->integer('idx')->nullable();
-            $table->foreignUuid('book_id')->contrained();
-            $table->foreignUuid('library_id')->nullable()->contrained();
+            $table->foreignUuid('book_id')->constrained();
+            $table->foreignUuid('library_id')->nullable()->constrained();
             $table->integer('printed')->default(0);
             $table->integer('status')->default(0);
             $table->string('shelf')->nullable();

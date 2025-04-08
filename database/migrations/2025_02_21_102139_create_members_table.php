@@ -16,13 +16,13 @@ return new class extends Migration
             $table->string('card')->nullable();
             //$table->uuid('created_by');
             //$table->foreign('created_by')->references('users')->on('id');
-            $table->foreignUuid('user_id')->nullable()->contrained();
+            $table->foreignUuid('user_id')->nullable()->constrained();
             $table->string('name');
             $table->string('surename');
             $table->string('patronymic')->nullable();
             $table->string('passport');
             $table->string('email')->nullable();
-            $table->foreignId('role_id')->default(6)->contrained();
+            $table->foreignId('role_id')->default(6)->constrained();
             $table->foreignId('course_id')->nullable();
             $table->string('phone')->nullable();
             $table->date('bday')->nullable();
