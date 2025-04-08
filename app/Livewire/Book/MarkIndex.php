@@ -74,6 +74,7 @@ class MarkIndex extends Component
     }
 
     public function justUpdate(){
+        Mark::with('book')->whereIn('id',$this->printItems)->update(['printed'=>1]);
         $this->printItems=[];
 
     }

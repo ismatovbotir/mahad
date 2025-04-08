@@ -70,7 +70,7 @@ class MarkController extends Controller
         $marks=Session::get('labels');
         Session::forget('labels');
         if(count($marks)>0){
-            Mark::with('book')->whereIn('id',$marks)->update(['printed'=>1]);
+            
             $selectedMarks=Mark::with('book')->whereIn('id',$marks)->get();
             
             
