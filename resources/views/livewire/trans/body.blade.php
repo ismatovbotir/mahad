@@ -18,8 +18,8 @@
                     <tr>
                         <th scope="row">{{$index+1}}</th>
                         <td>
-                            <div class="user-avatar bg-dim d-none d-sm-flex" style="border-radius:10px;">
-                                <img class="" src="{{asset($tran->mark->book->img)}}" alt="">
+                            <div class="user-avatar bg-dim d-none d-sm-flex" style="border-radius:5px;">
+                                <img class="" src="{{asset($tran->mark->book->img)}}" alt="" style="border-radius:5px;">
                             </div>
                         </td>
                         <td>

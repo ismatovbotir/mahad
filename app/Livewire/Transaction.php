@@ -40,7 +40,7 @@ class Transaction extends Component
                     $this->message = "Ushbu kitob, Talaba: " . $trans->member->name . " tasarrufida";
                     $this->showButton=0;
                 }
-                dd($this->message);
+                //dd($this->message);
             }else{
                 $this->bookName = $mark->book->name;
                 $this->showButton = 1;

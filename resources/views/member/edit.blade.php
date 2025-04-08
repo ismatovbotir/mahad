@@ -55,7 +55,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="personal">
                                     <div class="row gy-4">
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
 
 
                                             <div class="card card-bordered">
@@ -81,7 +81,7 @@
                                         </div>
 
 
-                                        <div class="col-md-9">
+                                        <div class="col-md-10">
                                             <div class="row">
 
                                                 <div class="form-group col-md-4">
@@ -92,18 +92,28 @@
                                                     <label class="form-label" for="full-name">Familiya</label>
                                                     <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Familiya" name="surename" value="{{old('surename',$member->surename)}}">
                                                 </div>
-                                                <div class="col-md-4">
+                                                <div class="form-group col-md-4">
+                                                    <label class="form-label" for="full-name">Sharif</label>
+                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Sharif" name="patronymic" value="{{old('patronymic',$member->patronymic)}}">
+                                                </div>
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label class="form-label" for="birth-day">Tugilgan Sana</label>
                                                         <input type="date" class="form-control form-control-lg" name="bday" value="{{old('bday',$member->bday)}}">
 
                                                     </div>
                                                 </div>
+                                                <div class="col-md-2">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="birth-day">E-mail</label>
+                                                        <input type="email" class="form-control form-control-lg" name="email" value="{{old('email',$member->email)}}">
+
+                                                    </div>
+                                                </div>
 
 
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-3">
+                                           
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label class="form-label" for="full-name">Passport</label>
                                                         <input type="text" class="form-control form-control-lg" id="full-name" placeholder="JSHSHIR(PINFL)" name="passport" value="{{old('passport',$member->passport)}}">
@@ -112,13 +122,13 @@
 
 
 
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label class="form-label" for="phone-no">Tel</label>
                                                         <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="telefon raqami" name="phone" value="{{old('phone',$member->phone)}}">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label class="form-label" for="phone-no">A'zolik kartasi</label>
                                                         <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="A'zolik kartasi raqami" name="card" value="{{$member->card}}">
@@ -127,7 +137,7 @@
 
 
 
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
 
 
@@ -146,8 +156,7 @@
 
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
+                                            
                                                 <div class="col-12">
                                                     <div class="form-group">
 

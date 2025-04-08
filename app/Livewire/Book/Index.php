@@ -20,9 +20,7 @@ class Index extends Component
     {
         $agg=Book::withCount(
             [
-                'marks as all' => function ($query) {
-                    $query->where('status','<>', 100);
-                },
+               
                 'marks as new' => function ($query) {
                     $query->where('status', 0);
                 },

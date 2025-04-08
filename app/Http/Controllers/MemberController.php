@@ -18,7 +18,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $title="Kutubxona a'zosi";
+        $title="Kutubxona a'zolari";
         $roles=Role::where('type',2)->get();
         //dd($roles);
         //$data=Member::paginate(10);
@@ -48,6 +48,7 @@ class MemberController extends Controller
         $member=Member::create([
             "name"=>$validated["name"],
             "surename"=>$validated["surename"],
+            "patronymic"=>$request["patronymic"],
             "passport"=>$validated["passport"],
             "email"=>$validated["email"],
             "bday"=>$bday,
@@ -122,7 +123,7 @@ class MemberController extends Controller
         $member->phone=$validated["phone"];
         $member->card=$request["card"];
         $member->address=$request["address"];
-            
+        $member->patronymic=$request["patronymic"];    
         
 
         $file=$request->file('photo');

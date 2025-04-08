@@ -31,7 +31,11 @@ class Index extends Component
             $data=Member::withCount('transaction')->paginate(10);
         }else{
             //dd($this->search);
-            $data=Member::withCount('transaction')->where('name','like','%'.$this->search.'%')->orWhere('surename','like','%'.$this->search.'%')->paginate(10);
+            $data=Member::withCount('transaction')->
+                        where('name','like','%'.$this->search.'%')->
+                        orWhere('surename','like','%'.$this->search.'%')->
+                        orWhere('patronymic','like','%'.$this->search.'%')->
+                        paginate(10);
         }
         //dd($data);
         return view('livewire.member.index',compact('title','roles','data'));

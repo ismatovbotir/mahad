@@ -54,7 +54,7 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="personal">
                                 <div class="row gy-4">
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
 
 
                                         <div class="card card-bordered">
@@ -82,7 +82,7 @@
                                     </div>
 
 
-                                    <div class="col-md-9">
+                                    <div class="col-md-10">
                                         <div class="row">
 
                                             <div class="form-group col-md-4">
@@ -93,14 +93,17 @@
                                                 <label class="form-label" for="full-name">Familiya</label>
                                                 <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Familiya" name="surename" value="{{old('surename',$member->surename)}}" disabled>
                                             </div>
-                                            <div class="col-md-4 form-group">
+                                            <div class="form-group col-md-4">
+                                                <label class="form-label" for="full-name">Sharif</label>
+                                                <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Sharif" name="surename" value="{{old('patronymic',$member->patronymic)}}" disabled>
+                                            </div>
+                                            <div class="col-md-2 form-group">
 
                                                 <label class="form-label" for="display-name">E-mail</label>
                                                 <input type="text" class="form-control form-control-lg" id="display-name" placeholder="e-mail" name="email" value="{{old('email',$member->email)}}" disabled>
 
                                             </div>
-                                        </div>
-                                        <div class="row">
+                                       
 
                                             <div class="col-md-2">
                                                 <div class="form-group">

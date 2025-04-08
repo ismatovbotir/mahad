@@ -28,19 +28,19 @@
                 </thead>
                 <tbody>
                     @foreach($data as $user)
-                    <tr class="nk-tb-item odd">
+                    <tr class="nk-tb-item odd" wire:key="{{$user->id}}">
 
                         <td class="nk-tb-col">
                             <div class="user-card">
-                            <div class="user-avatar bg-dim d-none d-sm-flex">
+                                <div class="user-avatar bg-dim  d-sm-flex" >
                                     @if($user->img)
-                                    <img src="{{asset($user->img)}}" alt="">
+                                    <img src="{{asset($user->img)}}" alt="" style="border-radius:5px;">
                                     @else
-                                    <img src=".\images\logo.jpg" alt="">
+                                    <img src=".\images\logo.jpg" alt="" style="border-radius:5px;">
                                     @endif
                                 </div>
-                                <div class="user-info">
-                                    <span class="tb-lead">{{$user->name}} {{$user->surename}} <span class="dot dot-{{($user->status==1?'success':'danger')}} d-md-none ml-1"></span></span>
+                                <div class="user-info pl-1">
+                                    <span class="tb-lead">{{$user->name}} {{$user->surename}} {{$user->patronymic}}<span class="dot dot-{{($user->status==1?'success':'danger')}} d-md-none ml-1"></span></span>
                                     <span>{{$user->email}}</span>
                                 </div>
                             </div>
@@ -49,7 +49,9 @@
                             <span class="tb-amount">{{$user->phone}}</span>
                         </td>
                         <td class="nk-tb-col tb-col-md">
+                            @if($user->transaction_count>0)    
                             <span>{{$user->transaction_count}} ta</span>
+                            @endif
                         </td>
 
                         <td class="nk-tb-col tb-col-md">
