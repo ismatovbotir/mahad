@@ -1,5 +1,5 @@
 <div class="mb-3">
-    <form action="" wire:submit.prevent>
+    
         <div class="row">
 
             @if($button==1)
@@ -62,5 +62,5 @@
             @endif
 
         </div>
-    </form>
+    
 </div>

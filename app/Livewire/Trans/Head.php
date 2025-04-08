@@ -31,12 +31,24 @@ class Head extends Component
             $this->reset('bookMark');
         } else {
             //dd($mark->book);
-            $sameBook=Trans::with('mark.book')->where('status',2)->where('member_id',$this->member)->first();
-            //dd($sameBook);
-            if($sameBook!=null){
-                $this->message="Talaba tasarrufida ushbu kitobdan mavjud";
-                $this->showButton=0;
-                $this->reset('bookMark');
+            $cBooks=Trans::with('mark.book')->where('status',2)->where('member_id',$this->member)->where('state',0)->get();
+            //dd($cBooks);
+            if($cBooks!=null){
+                
+                foreach($cBooks as $cBook){
+                   // dd($cBook->mark->book_id."  ".$mark->book->id);
+                    if($cBook->mark->book_id==$mark->book->id){
+                        
+                        $this->message="Talaba tasarrufida ushbu kitobdan mavjud";
+                        $this->showButton=0;
+                        $this->reset('bookMark');
+                    }else{
+                        $this->bookName = $mark->book->name;
+                        $this->showButton = 1;
+                        $this->message=$mark->book->name;
+                    }
+                
+                }
 
             }else{
 
