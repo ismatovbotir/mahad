@@ -74,6 +74,7 @@ class MarkIndex extends Component
     }
 
     public function justUpdate(){
+        $this->printItems=[];
 
     }
     public function searchMark(){
@@ -82,10 +83,7 @@ class MarkIndex extends Component
 
     }
 
-    public function printLabels(){
-        dd($this->printItems);
-        $this->redirect('/print/labels');
-    }
+    
     public function updatePrintItems(){
         
         Session::put('labels',$this->printItems);
