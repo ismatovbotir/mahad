@@ -25,7 +25,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware'=>'auth','as'=>'admin.'],function(){
     
-    Route::get('/mark/{mark}/print',[MarkController::class,'print'])->name('mark.print');
+    Route::get('/mark/print',[MarkController::class,'print'])->name('mark.print');
     Route::resource('/book',BookController::class);
     //Route::get('/member/{member}/block',[MemberController::class,'block'])->name('member.block');
     Route::resource('/member',MemberController::class);

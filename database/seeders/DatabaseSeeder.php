@@ -80,17 +80,19 @@ class DatabaseSeeder extends Seeder
         );
 
         $member=Member::create([
-            'name'=>'Botir',
-            'surename'=>'Ismatov',
+            'name'=>'Мехмон',
+            'surename'=>'Китобхон',
             'passport'=>'123456789',
             
         ]);
 
         $categories=Array(
-           ['name'=>'Diniy'],
-           ['name'=>'Ilmiy'],
-           ['name'=>'Adabiy'],
-           ['name'=>'Tarixiy']
+           ['name'=>'Умумий таълим фанлари'],
+           ['name'=>'Мутахассислик фанлари'],
+           ['name'=>'Араб тилидаги илмий адабиётлар'],
+           ['name'=>'Рус ва инглиз тилларидаги дарсликлар'],
+           ['name'=>'Бадиий адабиётлар'],
+           ['name'=>'Илмий оммабоп адабиётлар']
             
 
         );

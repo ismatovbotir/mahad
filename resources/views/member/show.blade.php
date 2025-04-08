@@ -140,6 +140,26 @@
 
                                                 </div>
                                             </div>
+
+                                            <div class="col-12">
+                                                <div class="form-group">
+
+
+                                                    <label class="form-label" for="customFileLabel">Adres</label>
+                                                    <div class="form-control-wrap">
+
+
+                                                        <input type="text" name="address" class="form-control no-resize" value="{{$member->address}}" disabled>
+
+
+
+                                                    </div>
+
+
+
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
 

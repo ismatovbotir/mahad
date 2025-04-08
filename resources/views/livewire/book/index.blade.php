@@ -33,11 +33,11 @@
 
                         <td class="nk-tb-col">
                             <div class="user-card">
-                                <div class="user-avatar bg-dim-primary d-none d-sm-flex">
+                                <div class="user-avatar bg-dim-primary d-none d-sm-flex" style="border-radius:5px;overflow:hidden;">
                                     @if($book->img)
-                                    <img src="{{asset($book->img)}}" alt="">
+                                    <img style="border-radius:5px;" src="{{asset($book->img)}}" alt="">
                                     @else
-                                    <img src=".\images\logo.jpg" alt="">
+                                    <img style="border-radius:5px;" src=".\images\logo.jpg" alt="">
                                     @endif
                                 </div>
                                 <div class="user-info">

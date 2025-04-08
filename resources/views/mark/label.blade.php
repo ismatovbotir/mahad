@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{$mark->book->name}} 60×30 мм</title>
+    <title>{{count($marks)}} 60×30 мм</title>
     <style>
         @page {
             size: 60mm 30mm; /* Размер печатного листа */
@@ -38,13 +38,16 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            font-size: 14px;
+            font-size: 12px;
             font-family: Arial, sans-serif;
             /* border: 1px solid black; */
         }
         .info{
             margin-left:2px;
             text-wrap: wrap;
+        }
+        .title{
+            font-size:10px;
         }
         
     </style>
@@ -53,13 +56,15 @@
 
 
 
-
+@foreach($marks as $mark)
 <div class="label">
     <div class="info">
         
         {{$mark->book->name}}
+         
+        {{'('.$mark->idx.')'}}
         <br>
-        Mahad
+        <span class="title">Imom Buxoriy nomidagi Toshkent Islom Instituti<span>
     </div>
     <div class="info">
         {!! QrCode::size(80)->generate($mark->id) !!}
@@ -68,6 +73,7 @@
     
    
 </div>
+@endforeach
 
 <script>
     document.addEventListener('load',window.print())

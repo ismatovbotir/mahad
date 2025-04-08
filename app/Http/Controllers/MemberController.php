@@ -53,7 +53,8 @@ class MemberController extends Controller
             "bday"=>$bday,
             "role_id"=>$validated["role"],
             "phone"=>$validated["phone"],
-            "card"=>$request["card"]
+            "card"=>$request["card"],
+            "address"=>$request["address"]
             
         ]);
         $file=$request->file('photo');
@@ -120,6 +121,7 @@ class MemberController extends Controller
         $member->role_id=$validated["role"];
         $member->phone=$validated["phone"];
         $member->card=$request["card"];
+        $member->address=$request["address"];
             
         
 

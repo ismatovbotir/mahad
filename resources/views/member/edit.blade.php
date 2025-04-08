@@ -40,135 +40,153 @@
                             @method('PUT')
 
 
-                           
-                                <div>
-                                    @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                    @endif
+
+                            <div>
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
                                 </div>
-                                <div class="tab-content">
-                                    <div class="tab-pane active" id="personal">
-                                        <div class="row gy-4">
-                                            <div class="col-md-3">
+                                @endif
+                            </div>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="personal">
+                                    <div class="row gy-4">
+                                        <div class="col-md-3">
 
 
-                                                <div class="card card-bordered">
-                                                    <img src="{{$member->img!=null?asset($member->img):'images/logo.jpg'}}" class="card-img-top" alt="">
-
-                                                </div>
-
-                                                <div class="form-group mt-1">
-
-
-
-                                                    <div class="form-control-wrap">
-                                                        <div class="custom-file">
-                                                            <input type="file" class="custom-file-input" id="customFile" name="photo">
-                                                            <label class="custom-file-label" for="customFile">Rasm faylini tanlang</label>
-                                                        </div>
-                                                    </div>
-
-
-
-                                                </div>
+                                            <div class="card card-bordered">
+                                                <img src="{{$member->img!=null?asset($member->img):'images/logo.jpg'}}" class="card-img-top" alt="">
 
                                             </div>
 
+                                            <div class="form-group mt-1">
 
-                                            <div class="col-md-9">
-                                                <div class="row">
 
-                                                    <div class="form-group col-md-6">
-                                                        <label class="form-label" for="full-name">Ism</label>
-                                                        <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Ism " name="name" value="{{old('name',$member->name)}}">
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label class="form-label" for="full-name">Familiya</label>
-                                                        <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Familiya" name="surename" value="{{old('surename',$member->surename)}}">
+
+                                                <div class="form-control-wrap">
+                                                    <div class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="customFile" name="photo">
+                                                        <label class="custom-file-label" for="customFile">Rasm faylini tanlang</label>
                                                     </div>
                                                 </div>
-                                                <div class="row">
 
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label class="form-label" for="birth-day">Tugilgan Sana</label>
-                                                            <input type="date" class="form-control form-control-lg" name="bday" value="{{old('bday',$member->bday)}}">
 
-                                                        </div>
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="col-md-9">
+                                            <div class="row">
+
+                                                <div class="form-group col-md-4">
+                                                    <label class="form-label" for="full-name">Ism</label>
+                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Ism " name="name" value="{{old('name',$member->name)}}">
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <label class="form-label" for="full-name">Familiya</label>
+                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Familiya" name="surename" value="{{old('surename',$member->surename)}}">
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="birth-day">Tugilgan Sana</label>
+                                                        <input type="date" class="form-control form-control-lg" name="bday" value="{{old('bday',$member->bday)}}">
+
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label class="form-label" for="full-name">Passport</label>
-                                                            <input type="text" class="form-control form-control-lg" id="full-name" placeholder="JSHSHIR(PINFL)" name="passport" value="{{old('passport',$member->passport)}}">
-                                                        </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="full-name">Passport</label>
+                                                        <input type="text" class="form-control form-control-lg" id="full-name" placeholder="JSHSHIR(PINFL)" name="passport" value="{{old('passport',$member->passport)}}">
                                                     </div>
+                                                </div>
 
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label class="form-label" for="display-name">E-mail</label>
-                                                            <input type="text" class="form-control form-control-lg" id="display-name" placeholder="e-mail" name="email" value="{{old('email',$member->email)}}">
-                                                        </div>
+
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="phone-no">Tel</label>
+                                                        <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="telefon raqami" name="phone" value="{{old('phone',$member->phone)}}">
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label class="form-label" for="phone-no">Tel</label>
-                                                            <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="telefon raqami" name="phone" value="{{old('phone',$member->phone)}}">
-                                                        </div>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="phone-no">A'zolik kartasi</label>
+                                                        <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="A'zolik kartasi raqami" name="card" value="{{$member->card}}">
                                                     </div>
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label class="form-label" for="phone-no">A'zolik kartasi</label>
-                                                            <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="A'zolik kartasi raqami" name="card" value="{{$member->card}}">
-                                                        </div>
-                                                    </div>
-
-                                                   
-
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
+                                                </div>
 
 
 
-                                                            <label class="form-label" for="role">Role</label>
-                                                            <select class="form-select" name="role">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
 
-                                                                @foreach($roles as $role)
-                                                                @if($role->id==$member->role_id)
-                                                                <option value="{{$role->id}}" selected>{{$role->name}}</option>
-                                                                @else
-                                                                <option value="{{$role->id}}">{{$role->name}}</option>
-                                                                @endif
-                                                                @endforeach
-                                                            </select>
 
-                                                        </div>
+
+                                                        <label class="form-label" for="role">Role</label>
+                                                        <select class="form-select" name="role">
+
+                                                            @foreach($roles as $role)
+                                                            @if($role->id==$member->role_id)
+                                                            <option value="{{$role->id}}" selected>{{$role->name}}</option>
+                                                            @else
+                                                            <option value="{{$role->id}}">{{$role->name}}</option>
+                                                            @endif
+                                                            @endforeach
+                                                        </select>
+
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+
+
+                                                        <label class="form-label" for="customFileLabel">Adres</label>
+                                                        <div class="form-control-wrap">
+
+
+                                                            <input type="text" name="address" class="form-control no-resize" value= "{{old('address',$member->address)}}">
+                                                           
+                                                           
+
+                                                        </div>
 
 
 
-                                            <div class="col-12">
-                                                <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
-                                                    <li>
-                                                        <button type="submit" class="btn btn-success">Saqlash</button>
-                                                    </li>
-                                                    <li>
-                                                        <a href="{{route('admin.member.index')}}" data-dismiss="modal" class="link link-light">Bekor</a>
-                                                    </li>
-                                                </ul>
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
-                                    </div><!-- .tab-pane -->
 
-                                </div><!-- .tab-content -->
-                           
+
+
+                                        <div class="col-12">
+                                            <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                                <li>
+                                                    <button type="submit" class="btn btn-success">Saqlash</button>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('admin.member.index')}}" data-dismiss="modal" class="link link-light">Bekor</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div><!-- .tab-pane -->
+
+                            </div><!-- .tab-content -->
+
 
 
                         </form>

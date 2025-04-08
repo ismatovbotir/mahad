@@ -12,6 +12,7 @@ use App\Models\Mark;
 use App\Models\Book;
 use App\Models\Library;
 use App\Models\Transaction as Trans;
+use Illuminate\Support\Facades\Session;
 
 
 class MarkIndex extends Component
@@ -21,6 +22,7 @@ class MarkIndex extends Component
     public $qty;
     public $search=''; 
     public $searchMark='';
+    public $printItems=[];
     
 
     public function mount(){
@@ -31,15 +33,21 @@ class MarkIndex extends Component
         $library=Library::first();
         $book=Book::where('id',$this->id)->first();
         $shelf=$book->shelf;
+        $idx=Mark::where('book_id',$book->id)->count();    
+        $newLabels=[];
         for($x=1;$x<=$this->qty;$x++){
-            Mark::create(
+            $mark=Mark::create(
                 [
                     'book_id'=>$this->id,
                     'shelf'=>$shelf,
+                    'idx'=>$idx+$x,
                     'library_id'=>$library->id
                 ]
                 );
+                $this->printItems[]=$mark->id;
+
         }
+        Session::put('labels',$this->printItems);
 
         $this->qty=1;
     }
@@ -74,11 +82,20 @@ class MarkIndex extends Component
 
     }
 
+    public function printLabels(){
+        dd($this->printItems);
+        $this->redirect('/print/labels');
+    }
+    public function updatePrintItems(){
+        
+        Session::put('labels',$this->printItems);
+    }
+
     public function render()
     {
-       //dd($this->id);
+       //dd($this->printItems);
        if($this->searchMark==''){ 
-            $marks=Mark::where('book_id',$this->id)->paginate(5);
+            $marks=Mark::where('book_id',$this->id)->orderBy('idx','asc')->paginate(5);
        }else{
             $marks=Mark::where([
                     ['book_id',$this->id],
@@ -87,6 +104,7 @@ class MarkIndex extends Component
                 ])->paginate(5);
        } //dd($marks);
        $this->search='';
-        return view('livewire.book.mark-index',compact('marks'));
+       $printItems=$this->printItems;
+        return view('livewire.book.mark-index',compact('marks','printItems'));
     }
 }

@@ -7,13 +7,28 @@
                 <div class="btn-group">
                     <input type="number" wire:model="qty" class="text-center">
                     <button wire:click="createMark" type="button" class="btn btn-success">Kitob Qo'shish</button>
+
                 </div>
 
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="btn-group">
+
+                @if(count($printItems)>0)
+
+
+                <a wire:click="justUpdate" href="{{route('admin.mark.print')}}" class="btn btn-info" target="_blank"><span class="icon ni ni-printer"></span> ({{count($printItems)}})</a>
+                {{--<a wire:click="justUpdate" href="{{route('admin.mark.print')}}" class="btn btn-info" target="_blank"><span class="icon ni ni-printer"></span></a>--}}
+
+                @endif
             </div>
         </div>
         {{--<div class="form-group col-md-9">
 
             <input type="text" wire:model.live="search">
+
 
 
         </div>--}}
@@ -27,6 +42,7 @@
             <table class="table">
                 <thead class="thead-light">
                     <tr>
+                        <th scope="col"><span class="ni ni-printer"></span></th>
                         <th scope="col">id</th>
                         <th scope="col">Bo'lim</th>
                         <th scope="col">Status</th>
@@ -36,8 +52,15 @@
                 </thead>
                 <tbody>
                     @foreach($marks as $index=>$mark)
-                    <tr>
-                        <th scope="row">{{$mark->id}}</th>
+                    <tr wire:key="{{$mark->id}}">
+                        <td>
+
+                            <input type="checkbox" wire:model.live="printItems" wire:click="updatePrintItems" value="{{$mark->id}}">
+
+
+
+                        </td>
+                        <td scope="row">{{$mark->idx}}</td>
                         <td>
                             <input type="text" class="text-right mark-input" value="{{$mark->shelf}}" wire:change="updateShelf('{{$mark->id}}',$event.target.value)">
                         </td>
@@ -60,7 +83,6 @@
                             @endif
                         </td>
                         <td>
-                            <a wire:click="justUpdate" href="{{route('admin.mark.print',['mark'=>$mark->id])}}" class="btn btn-info" target="_blank"><span class="icon ni ni-printer"></span></a>
 
                             @if($mark->status==3)
                             <a wire:click.prevent="restoration('{{$mark->id}}',1)" href="" class="btn btn-success"><span class="icon ni ni-done"></span></a>
@@ -76,6 +98,7 @@
             </table>
             <div>{{$marks->links()}}</div>
             @endif
+            
         </div>
     </div>
 </div>

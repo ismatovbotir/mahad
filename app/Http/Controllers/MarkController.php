@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Mark;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Session;
 
 class MarkController extends Controller
 {
@@ -64,12 +65,20 @@ class MarkController extends Controller
         //
     }
 
-    public function print($mark){
-        
-        $selectedMark=Mark::with('book')->where('id',$mark)->first();
+    public function print(){
+        $marks=Session::get('labels');
+        if(count($marks)>0){
+            Mark::with('book')->whereIn('id',$marks)->update(['printed'=>1]);
+            $selectedMarks=Mark::with('book')->whereIn('id',$marks)->get();
+            
+            
+            //dd($selectedMarks);
 
-        $selectedMark->printed=1;
-        $selectedMark->save();
-        return view('mark.label',['mark'=>$selectedMark]);
+       
+        return view('mark.label',['marks'=>$selectedMarks]);
+
+        }
+        
+        
     }
 }

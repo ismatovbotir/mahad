@@ -13,8 +13,9 @@
     <title>Mahad Kutubxonasi</title>
     <!-- StyleSheets  -->
     <link rel="stylesheet" href="./assets/css/dashlite.css?ver=2.4.0">
-    <link rel="stylesheet" href="./assets/css/bip.css">
+    
     <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=2.4.0">
+    <link rel="stylesheet" href="./assets/css/bip.css">
     
     
 </head>

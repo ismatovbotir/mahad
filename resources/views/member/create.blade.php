@@ -94,15 +94,15 @@
                                                 <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="telefon raqami" name="phone" value="{{@old('phone')}}">
                                             </div>
                                         </div>
-                                        
 
-                                        <div class="col-md-6">
+
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="form-label" for="phone-no">A'zolik kartasi</label>
                                                 <input type="text" class="form-control form-control-lg" placeholder="Karta raqami" name="card" value="{{@old('card')}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group">
 
 
@@ -122,19 +122,28 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
+                                                <label class="form-label" for="phone-no">Tel</label>
+                                                <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="telefon raqami" name="phone" value="{{@old('phone')}}">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
 
 
-                                                <label class="form-label" for="customFileLabel">Rasm(Tasvir)</label>
+                                                <label class="form-label" for="customFileLabel">Adres</label>
                                                 <div class="form-control-wrap">
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="customFile" name="photo">
-                                                        <label class="custom-file-label" for="customFile">Rasm faylini tanlang</label>
-                                                    </div>
+
+
+                                                    <input type="text" name="address" class="form-control no-resize" value="{{@old('address')}}">
+                                                    
+                                                   
+
                                                 </div>
 
 
 
                                             </div>
+
                                         </div>
 
                                         <div class="col-12">

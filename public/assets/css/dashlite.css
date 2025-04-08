@@ -3702,7 +3702,7 @@ a { transition: color .4s, background-color .4s, border .4s, box-shadow .4s; }
 
 a:focus { outline: none; }
 
-img { max-width: 100%; }
+img { max-height: 100%; }
 
 strong { font-weight: 500; }
 

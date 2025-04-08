@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignUuid('user_id')->nullable()->contrained();
             $table->string('name');
             $table->string('surename');
+            $table->string('patronymic')->nullable();
             $table->string('passport');
             $table->string('email')->nullable();
             $table->foreignId('role_id')->default(6)->contrained();
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->date('bday')->nullable();
             $table->string('img')->nullable();
+            $table->string('address')->nullable();
             $table->integer('status')->default('1');
 
             $table->timestamps();
