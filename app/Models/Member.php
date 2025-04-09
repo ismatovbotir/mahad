@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Role;
 use App\Models\Transaction;
+use App\Models\Course;
 
 class Member extends Model
 {
@@ -18,6 +19,9 @@ class Member extends Model
 
     public function role(){
         return $this->belongsTo(Role::class);
+    }
+    public function course(){
+        return $this->belongsTo(Course::class);
     }
     public function transaction(){
         return $this->hasMany(Transaction::class)->where('status',2)->where('state',0);

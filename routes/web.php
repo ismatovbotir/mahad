@@ -4,6 +4,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\MarkController;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,7 @@ Route::group(['middleware'=>'auth','as'=>'admin.'],function(){
     
     Route::resource('/user',UserController::class);
     //Route::resource('/reader',ReaderController::class);
+    Route::resource('/course',CourseController::class);
 
     
 });
