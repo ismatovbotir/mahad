@@ -31,26 +31,7 @@ class Head extends Component
             $this->reset('bookMark');
         } else {
             //dd($mark->book);
-            $cBooks=Trans::with('mark.book')->where('status',2)->where('member_id',$this->member)->where('state',0)->get();
-            //dd($cBooks);
-            if($cBooks!=null){
-                
-                foreach($cBooks as $cBook){
-                   // dd($cBook->mark->book_id."  ".$mark->book->id);
-                    if($cBook->mark->book_id==$mark->book->id){
-                        
-                        $this->message="Talaba tasarrufida ushbu kitobdan mavjud";
-                        $this->showButton=0;
-                        $this->reset('bookMark');
-                    }else{
-                        $this->bookName = $mark->book->name;
-                        $this->showButton = 1;
-                        $this->message=$mark->book->name;
-                    }
-                
-                }
-
-            }else{
+           
 
             
 
@@ -68,16 +49,41 @@ class Head extends Component
                     $this->bookName=$mark->book->name;
                     $this->showButton = 2;
                 } else {
-                    $this->message = "Ushbu kitob(". $mark->book->name."), Talaba: " . $trans->member->name . " tasarrufida";
+                    $this->message = "Ushbu kitob(". $mark->book->name."), Talaba: ".  $trans->member->name . " tasarrufida";
                     $this->reset('bookMark');
                 }
                 //dd($this->message);
-            } else {
-                $this->bookName = $mark->book->name;
-                $this->showButton = 1;
-                $this->message=$mark->book->name;
+            }else {
+                $cBooks=Trans::with('mark.book')->where('status',2)->where('member_id',$this->member)->where('state',0)->get();
+                //dd($cBooks);
+                if(count($cBooks)!=0){
+                    
+                    foreach($cBooks as $cBook){
+                       // dd($cBook->mark->book_id."  ".$mark->book->id);
+                        if($cBook->mark->book_id==$mark->book->id){
+                            
+                            $this->message="Talaba tasarrufida ushbu kitobdan mavjud";
+                            $this->showButton=0;
+                            $this->reset('bookMark');
+                        }else{
+                            //dd($mark);
+                            $this->bookName = $mark->book->name;
+                            $this->showButton = 1;
+                            $this->message=$mark->book->name;                
+                        }
+                    
+                    }
+    
+                }else{
+
+                    $this->bookName = $mark->book->name;
+                    $this->showButton = 1;
+                    $this->message=$mark->book->name;
+                }
+    
+                
             }
-        }
+        
         }
     }
 

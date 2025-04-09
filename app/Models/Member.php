@@ -20,6 +20,6 @@ class Member extends Model
         return $this->belongsTo(Role::class);
     }
     public function transaction(){
-        return $this->hasMany(Transaction::class)->where('status',2);
+        return $this->hasMany(Transaction::class)->where('status',2)->where('state',0);
     }
 }
