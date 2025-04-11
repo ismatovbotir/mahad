@@ -24,7 +24,7 @@
     </select>
     @else
     <label class="form-label" for="course">Guruh </label>
-    <button class="btn btn-success text-center w-100" data-toggle="modal" data-target="#courseModal">Guruh Qoshish</button>
+    <a class="btn btn-success text-center w-100" data-toggle="modal" data-target="#courseModal">Guruh Qoshish</a>
 
     @endif
 
