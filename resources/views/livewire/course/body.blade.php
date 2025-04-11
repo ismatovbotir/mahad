@@ -10,8 +10,9 @@
                         <th class="nk-tb-col tb-col-mb " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Guruh nomi</span></th>
                         <th class="nk-tb-col tb-col-md " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Ta'lim yili</span></th>
                         <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Talabalar</span></th>
-                      
                         <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Status</span></th>
+                      
+                        <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Action</span></th>
                        
 
                     </tr>
@@ -36,6 +37,14 @@
                             <span>{{$course->members_count}}</span>
                             @endif
                         </td>
+                        <td class="nk-tb-col tb-col-md">
+                            @if($course->status==1)    
+                            <span class="text-success">Aktiv</span>
+                            @else
+                            <span class="text-secondary">Yopilgan</span>
+                            @endif
+                        </td>
+                       
                        
                        
                         <td class="nk-tb-col tb-col-md">
