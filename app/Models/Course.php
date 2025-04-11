@@ -10,6 +10,8 @@ class Course extends Model
 {
     use HasFactory;
 
+    public $guarded=[];
+
     public function members(){
         return $this->hasMany(Member::class);
     }

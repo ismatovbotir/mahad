@@ -134,11 +134,20 @@
 
 
 
-                                            <div class="col-md-2">
+                                            <div class="col-md-1">
                                                 <div class="form-group">
 
                                                     <label class="form-label" for="role">Role</label>
                                                     <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="Rol" name="role" value="{{$member->role->name}}" disabled>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <div class="form-group">
+
+                                                    <label class="form-label" for="role">Guruh</label>
+                                                    <input type="text" class="form-control form-control-lg" id="phone-no"  name="role" value="{{$member->course?$member->course->name:''}}" disabled>
 
 
                                                 </div>

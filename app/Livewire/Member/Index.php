@@ -28,10 +28,10 @@ class Index extends Component
         //dd($roles);
         if($this->search==''){
 
-            $data=Member::withCount('transaction')->paginate(10);
+            $data=Member::withCount('transaction')->with('course')->paginate(10);
         }else{
             //dd($this->search);
-            $data=Member::withCount('transaction')->
+            $data=Member::withCount('transaction')->with('course')->
                         where('name','like','%'.$this->search.'%')->
                         orWhere('surename','like','%'.$this->search.'%')->
                         orWhere('patronymic','like','%'.$this->search.'%')->

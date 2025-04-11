@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\Member;
 use App\Models\MembersLog;
+use App\Models\Course;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -20,6 +21,7 @@ class MemberController extends Controller
     {
         $title="Kutubxona a'zolari";
         $roles=Role::where('type',2)->get();
+        //$courses=Course::where('status',1)->get();
         //dd($roles);
         //$data=Member::paginate(10);
         return view('member.index',compact('title','roles'));
@@ -32,7 +34,8 @@ class MemberController extends Controller
     {
         $title="Kutubxona a'zosi";
         $roles=Role::where('type',2)->orderBy('name','asc')->get();
-
+        //$courses=Course::where('status',1)->get();
+        //dd($courses);
         return view('member.create',compact('title','roles'));
     }
 
@@ -41,6 +44,7 @@ class MemberController extends Controller
      */
     public function store(MemberStoreRequest $request)
     {
+        //dd($request->all());
         $validated=$request->validated();
         //dd($validated);
         
@@ -53,9 +57,11 @@ class MemberController extends Controller
             "email"=>$validated["email"],
             "bday"=>$bday,
             "role_id"=>$validated["role"],
+            "course_id"=>$request["course"],
             "phone"=>$validated["phone"],
             "card"=>$request["card"],
             "address"=>$request["address"]
+
             
         ]);
         $file=$request->file('photo');
@@ -88,6 +94,7 @@ class MemberController extends Controller
     {
         $title="Kutubxona a'zosi";
         $member=Member::where('id',$id)->first();
+        
         //dd($member);
         //$roles=Role::where('type',2)->orderBy('name','asc')->get();
         return view('member.show',compact('title','member'));
@@ -100,9 +107,11 @@ class MemberController extends Controller
     {
        $member=Member::where('id',$id)->first();
        $roles=Role::where('type',2)->get();
+       $courses=Course::orderBy('name','asc')->get();
+       $currentCourse=$member->course_id;
        //dd($member);
        $title=$member->name." malumotlarini sozlash";
-       return view('member.edit',compact('member','title','roles'));
+       return view('member.edit',compact('member','title','roles','courses','currentCourse'));
     }
 
     /**
@@ -120,6 +129,7 @@ class MemberController extends Controller
         $member->email=$validated["email"];
         $member->bday=$bday;
         $member->role_id=$validated["role"];
+        $member->course_id=$request["course"];
         $member->phone=$validated["phone"];
         $member->card=$request["card"];
         $member->address=$request["address"];

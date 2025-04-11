@@ -34,6 +34,14 @@
                                     
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
+                                    <a href="{{route('admin.course.index')}}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><i class="icon ni ni-folder"></i></span>
+                                        
+                                        <span class="nk-menu-text">Guruhlar</span>
+                                    </a>
+                                    
+                                </li><!-- .nk-menu-item -->
+                                <li class="nk-menu-item">
                                     <a href="{{route('admin.member.index')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><i class="icon ni ni-users"></i></span>
                                         

@@ -18,7 +18,9 @@
                     <tr class="nk-tb-item nk-tb-head" role="row">
 
                         <th class="nk-tb-col " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Talaba</span></th>
+                        <th class="nk-tb-col tb-col-mb " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Guruh</span></th>
                         <th class="nk-tb-col tb-col-mb " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Tel:</span></th>
+                       
                         <th class="nk-tb-col tb-col-md " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Kitoblar</span></th>
                         <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Status</span></th>
                         <th class="nk-tb-col" tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Action</span></th>
@@ -44,6 +46,11 @@
                                     <span>{{$user->email}}</span>
                                 </div>
                             </div>
+                        </td>
+                        <td class="nk-tb-col tb-col-mb" data-order="35040.34">
+                            @if($user->course)    
+                                <span class="tb-amount">{{$user->course->name}}</span>
+                            @endif
                         </td>
                         <td class="nk-tb-col tb-col-mb" data-order="35040.34">
                             <span class="tb-amount">{{$user->phone}}</span>

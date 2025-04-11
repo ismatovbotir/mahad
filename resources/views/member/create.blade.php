@@ -43,6 +43,7 @@
 
 
                             <div>
+
                                 @if ($errors->any())
                                 <div class="alert alert-danger">
                                     <ul>
@@ -52,52 +53,57 @@
                                     </ul>
                                 </div>
                                 @endif
+
                             </div>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="personal">
                                     <div class="row gy-4">
+                                        <div class="col-md-2">
+                                            <livewire:course.aslist currentCourse="0" />
+                                        </div>
+
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="form-label" for="full-name">Ism</label>
-                                                <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Ism " name="name" value="{{@old('name')}}">
+                                                <input type="text" class="form-control" id="full-name" placeholder="Ism " name="name" value="{{@old('name')}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="form-label" for="full-name">Familiya</label>
-                                                <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Familiya" name="surename" value="{{@old('surename')}}">
+                                                <input type="text" class="form-control" id="full-name" placeholder="Familiya" name="surename" value="{{@old('surename')}}">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="form-label" for="full-name">Sharif</label>
-                                                <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Sharif" name="patronymic" value="{{@old('patronymic')}}">
+                                                <input type="text" class="form-control" id="full-name" placeholder="Sharif" name="patronymic" value="{{@old('patronymic')}}">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label class="form-label" for="birth-day">Tugilgan Sana</label>
-                                                <input type="date" class="form-control form-control-lg " name="bday" value="{{@old('bday')}}">
+                                                <input type="date" class="form-control" name="bday" value="{{@old('bday')}}">
 
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label class="form-label" for="full-name">Passport</label>
-                                                <input type="text" class="form-control form-control-lg" id="full-name" placeholder="JSHSHIR(PINFL)" name="passport" value="{{@old('passport')}}">
+                                                <input type="text" class="form-control" id="full-name" placeholder="JSHSHIR(PINFL)" name="passport" value="{{@old('passport')}}">
                                             </div>
                                         </div>
 
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label class="form-label" for="display-name">E-mail</label>
-                                                <input type="text" class="form-control form-control-lg" id="display-name" placeholder="e-mail" name="email" value="{{@old('email')}}">
+                                                <input type="text" class="form-control" id="display-name" placeholder="e-mail" name="email" value="{{@old('email')}}">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label class="form-label" for="phone-no">Tel</label>
-                                                <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="telefon raqami" name="phone" value="{{@old('phone')}}">
+                                                <input type="text" class="form-control" id="phone-no" placeholder="telefon raqami" name="phone" value="{{@old('phone')}}">
                                             </div>
                                         </div>
 
@@ -105,7 +111,7 @@
                                         <div class="col-md-2">
                                             <div class="form-group">
                                                 <label class="form-label" for="phone-no">A'zolik kartasi</label>
-                                                <input type="text" class="form-control form-control-lg" placeholder="Karta raqami" name="card" value="{{@old('card')}}">
+                                                <input type="text" class="form-control" placeholder="Karta raqami" name="card" value="{{@old('card')}}">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -116,7 +122,7 @@
 
                                                 <label class="form-label" for="role">Role</label>
                                                 <select class="form-select" name="role">
-
+                                                    <option>Rol</option>
                                                     @foreach($roles as $role)
                                                     <option value="{{$role->id}}">{{$role->name}}</option>
                                                     @endforeach
@@ -125,7 +131,8 @@
                                             </div>
                                         </div>
 
-                                        
+
+
                                         <div class="col-12">
                                             <div class="form-group">
 
@@ -135,8 +142,8 @@
 
 
                                                     <input type="text" name="address" class="form-control no-resize" value="{{@old('address')}}">
-                                                    
-                                                   
+
+
 
                                                 </div>
 
@@ -175,5 +182,5 @@
 @endsection
 
 @section ('modal')
-
+<livewire:course.head />
 @endsection

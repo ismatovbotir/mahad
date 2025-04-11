@@ -29,7 +29,8 @@ class MemberStoreRequest extends FormRequest
             "phone"=>"required",
             "bday"=>"required",
             "photo"=>'image|mimes:jpg,jpeg,png|max:1024',
-            "role"=>'integer'
+            "role"=>'required|integer',
+            "course"=>'required|integer'
             
         ];
     }
@@ -41,7 +42,12 @@ class MemberStoreRequest extends FormRequest
             "surenam.required"=>"Talaba familiyasi bosh bola olmaydi",
             "email.required"=>"Talaba email i bosh bola olmaydi",
             "passpord.required"=>"Talaba xujjati malumotlari bosh bola olmaydi",
-            "phone.required"=>"Talaba telefon raqami bosh bola olmaydi"
+            "phone.required"=>"Talaba telefon raqami bosh bola olmaydi",
+            "role.required"=>"Kutubxona azosi rolini tanlang",
+            "course.required"=>"Guruh tanlang",
+            "course.integer"=>"Guruh tanlang yoki yangi guruh qoshing",
+            "role.integer"=>"Kutubxon uchun rol tanlang"
+            
 
         ];
             

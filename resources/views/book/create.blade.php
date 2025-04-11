@@ -111,7 +111,7 @@
 
 
                                                 <label class="form-label" for="role">Kategoriya</label>
-                                                <select class="form-select" name="category">
+                                                <select class="form-select form-control-lg" name="category">
                                                     <option value="">Category tanlang</option>
                                                     @foreach($categories as $category)
                                                     <option value="{{$category->id}}">{{$category->name}}</option>

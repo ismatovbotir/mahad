@@ -84,39 +84,67 @@
                                         <div class="col-md-10">
                                             <div class="row">
 
-                                                <div class="form-group col-md-4">
-                                                    <label class="form-label" for="full-name">Ism</label>
-                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Ism " name="name" value="{{old('name',$member->name)}}">
+                                                <div class="col-md-2">
+                                                
+                                              
+                                                
+                                                <livewire:course.aslist currentCourse="{{$currentCourse}}"  />
+                                                   {{--
+                                                    
+                                                    <div class="form-group">
+
+
+
+                                                        <label class="form-label" for="course">Guruh  <a href="{{route('admin.course.index')}}"><span class="ni ni-plus"></span></a></label>
+                                                        <select class="form-select" name="course">
+
+                                                            @foreach($courses as $course)
+                                                            @if($course->id==$member->course_id)
+                                                            <option value="{{$course->id}}" selected>{{$course->name}}</option>
+                                                            @else
+                                                            <option value="{{$course->id}}">{{$course->name}}</option>
+                                                            @endif
+                                                            @endforeach
+                                                        </select>
+
+                                                    </div>
+                                                    
+                                                    --}}
                                                 </div>
-                                                <div class="form-group col-md-4">
+
+                                                <div class="form-group col-md-3">
+                                                    <label class="form-label" for="full-name">Ism</label>
+                                                    <input type="text" class="form-control " id="full-name" placeholder="Ism " name="name" value="{{old('name',$member->name)}}">
+                                                </div>
+                                                <div class="form-group col-md-3">
                                                     <label class="form-label" for="full-name">Familiya</label>
-                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Familiya" name="surename" value="{{old('surename',$member->surename)}}">
+                                                    <input type="text" class="form-control " id="full-name" placeholder="Familiya" name="surename" value="{{old('surename',$member->surename)}}">
                                                 </div>
                                                 <div class="form-group col-md-4">
                                                     <label class="form-label" for="full-name">Sharif</label>
-                                                    <input type="text" class="form-control form-control-lg" id="full-name" placeholder="Sharif" name="patronymic" value="{{old('patronymic',$member->patronymic)}}">
+                                                    <input type="text" class="form-control " id="full-name" placeholder="Sharif" name="patronymic" value="{{old('patronymic',$member->patronymic)}}">
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label class="form-label" for="birth-day">Tugilgan Sana</label>
-                                                        <input type="date" class="form-control form-control-lg" name="bday" value="{{old('bday',$member->bday)}}">
+                                                        <input type="date" class="form-control " name="bday" value="{{old('bday',$member->bday)}}">
 
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label class="form-label" for="birth-day">E-mail</label>
-                                                        <input type="email" class="form-control form-control-lg" name="email" value="{{old('email',$member->email)}}">
+                                                        <input type="email" class="form-control " name="email" value="{{old('email',$member->email)}}">
 
                                                     </div>
                                                 </div>
 
 
-                                           
+
                                                 <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label class="form-label" for="full-name">Passport</label>
-                                                        <input type="text" class="form-control form-control-lg" id="full-name" placeholder="JSHSHIR(PINFL)" name="passport" value="{{old('passport',$member->passport)}}">
+                                                        <input type="text" class="form-control " id="full-name" placeholder="JSHSHIR(PINFL)" name="passport" value="{{old('passport',$member->passport)}}">
                                                     </div>
                                                 </div>
 
@@ -125,13 +153,13 @@
                                                 <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label class="form-label" for="phone-no">Tel</label>
-                                                        <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="telefon raqami" name="phone" value="{{old('phone',$member->phone)}}">
+                                                        <input type="text" class="form-control " id="phone-no" placeholder="telefon raqami" name="phone" value="{{old('phone',$member->phone)}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="form-group">
                                                         <label class="form-label" for="phone-no">A'zolik kartasi</label>
-                                                        <input type="text" class="form-control form-control-lg" id="phone-no" placeholder="A'zolik kartasi raqami" name="card" value="{{$member->card}}">
+                                                        <input type="text" class="form-control " id="phone-no" placeholder="A'zolik kartasi raqami" name="card" value="{{$member->card}}">
                                                     </div>
                                                 </div>
 
@@ -156,7 +184,9 @@
 
                                                     </div>
                                                 </div>
-                                            
+
+
+
                                                 <div class="col-12">
                                                     <div class="form-group">
 
@@ -165,9 +195,9 @@
                                                         <div class="form-control-wrap">
 
 
-                                                            <input type="text" name="address" class="form-control no-resize" value= "{{old('address',$member->address)}}">
-                                                           
-                                                           
+                                                            <input type="text" name="address" class="form-control no-resize" value="{{old('address',$member->address)}}">
+
+
 
                                                         </div>
 
@@ -211,5 +241,5 @@
 @endsection
 
 @section ('modal')
-
+<livewire:course.head />
 @endsection
