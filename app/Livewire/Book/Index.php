@@ -6,19 +6,51 @@ use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
 use App\Models\Book;
-use App\Models\Category;
+use App\Models\Ebook;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Session;
 
 
 
 class Index extends Component
 {
     use WithPagination;
+    use WithFileUploads;
     public string $search='';
+    public $pdf;
+    public $showLoad=0;
     
+    public function loadPDF($id){
+       // dd($id);
+        //dd($this->file('pdf'));
+
+        $file=$this->pdf;
+        if($file!=null){
+            $ext=$file->getClientOriginalExtension();
+            dd($ext);
+            if($ext=="pdf"){
+                
+                $ebook=Ebook::create(['book_id'=>$id]);
+                $newFileName=$ebook->id.'.'.$ext;
+                $path=$file->storeAs('ebooks',$newFileName,'public');
+                $ebook->pdf='storage/'.$path;
+                $ebook->save();
+                Session::flash('message','pdf Saqlandi');
+            }else{
+                Session::flash('message','pdf Tanlang');
+            }
+            $this->reset(['pdf']);
+
+
+        }
+        $this->reset(['pdf']);
+
+    }
+
     
     public function render()
     {
-        $agg=Book::withCount(
+        $agg=Book::with('ebook')->withCount(
             [
                
                 'marks as new' => function ($query) {

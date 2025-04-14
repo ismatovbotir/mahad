@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 use App\http\Controllers\MarkController;
+use App\http\Controllers\EbookController;
+
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -23,6 +25,7 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::resource('/ebook',EbookController::class)->only(['index','show']);
 
 Route::group(['middleware'=>'auth','as'=>'admin.'],function(){
     

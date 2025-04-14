@@ -28,7 +28,7 @@
                                 </li><!-- .nk-menu-heading -->
                                 <li class="nk-menu-item has-sub">
                                     <a href="{{route('admin.book.index')}}" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-list"></em></span>
+                                        <span class="nk-menu-icon"><em class="icon ni ni-book-read"></em></span>
                                         <span class="nk-menu-text">Kitoblar</span>
                                     </a>
                                     

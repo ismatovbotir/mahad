@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\BookName;
 use App\Models\Mark;
 use App\Models\Writer;
+use App\Models\Ebook;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 
@@ -29,5 +30,9 @@ class Book extends Model
 
     public function category(){
         return $this->belongsTo(Category::class);
+    }
+
+    public function ebook(){
+        return $this->hasOne(Ebook::class);
     }
 }

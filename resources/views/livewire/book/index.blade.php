@@ -18,6 +18,9 @@
                     <tr class="nk-tb-item nk-tb-head" role="row">
 
                         <th class="nk-tb-col " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Kitoblar</span></th>
+
+                        <th class="nk-tb-col tb-col-mb " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">eBook</span></th>
+
                         <th class="nk-tb-col tb-col-mb " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Muallif</span></th>
                         <th class="nk-tb-col tb-col-md " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">GTIN</span></th>
                         <th class="nk-tb-col tb-col-lg " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><span class="sub-text">Muqova/Bet/Bo'lim</span></th>
@@ -29,7 +32,7 @@
                 </thead>
                 <tbody>
                     @foreach($books as $book)
-                    <tr class="nk-tb-item odd">
+                    <tr class="nk-tb-item odd" wire:key>
 
                         <td class="nk-tb-col">
                             <div class="user-card">
@@ -49,7 +52,38 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="nk-tb-col tb-col-mb" data-order="35040.34">
+
+                        {{--
+                            @if($book->ebook==null)
+                        <td class="nk-tb-col tb-col-mb " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1">
+                            <div class="form-group ">
+
+                                <div class="form-control-wrap">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" wire:model="pdf" wire:change="loadPDF('{{$book->id}}')">
+                                        <label class="custom-file-label" for="customFile">PDF tanlang</label>
+                                    </div>
+                                </div>
+                                @if (session()->has('message'))
+                                <div class="alert alert-success">
+                                    {{ session('message') }}
+                                </div>
+                                @endif
+
+                                
+                            </div>
+
+                        </td>
+                        @else
+                        <td class="nk-tb-col tb-col-mb " tabindex="0" aria-controls="DataTables_Table_1" rowspan="1" colspan="1"><a href="{{route('ebook.show',['ebook'=>$book->ebook->id])}}" target="_blank">eBook</a></td>
+                        @endif
+                        --}}
+
+                        <td class="nk-tb-col tb-col-mb"></td>
+
+
+
+                        <td class="nk-tb-col tb-col-mb">
 
                             <span class="tb-amount">{{$book->author}}</span>
 
@@ -65,10 +99,11 @@
                         </td>
                         <td class="nk-tb-col tb-col-md">
 
-                        {{--<span class="tb-status"><span class="text-secondary"> {{$book->library+$book->new-$book->defected}}<</span> / <span class="text-success">{{$book->library+$book->new-$book->defected}}</span></span>--}}
-                            <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="Jami:  {{$book->library+$book->new+$book->defected+$book->member}} ">
-                               {{$book->library+$book->new}}
-                            </button>
+                            {{--<span class="tb-status"><span class="text-secondary"> {{$book->library+$book->new-$book->defected}}
+                            << /span> / <span class="text-success">{{$book->library+$book->new-$book->defected}}</span></span>--}}
+                                <button type="button" class="btn btn-info" data-toggle="tooltip" data-placement="right" title="Jami:  {{$book->library+$book->new+$book->defected+$book->member}} ">
+                                    {{$book->library+$book->new}}
+                                </button>
 
 
 
